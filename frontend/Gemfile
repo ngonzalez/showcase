@@ -1,68 +1,80 @@
 source "https://rubygems.org"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.1.3", ">= 8.1.3.1"
-# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem "propshaft"
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", ">= 2.1"
-# Use the Puma web server [https://github.com/puma/puma]
-gem "puma", ">= 5.0"
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+ruby "3.4.9"
+
+# Rails is a web-application framework that includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern.
+gem "rails", github: "rails/rails", branch: "8-1-stable"
+
+# Pg is the Ruby interface to the PostgreSQL RDBMS. It works with PostgreSQL 9.3 and later.
+gem "pg"
+
+# Use the Puma web server [https://github.com/puma/puma/tags]
+gem "puma", github: "puma/puma", tag: "v8.0.2"
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder"
-# Integrate Tailwind CSS with the asset pipeline in Rails.
-gem 'tailwindcss-rails', '>= 4.6'
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+# Hotwire"s modest JavaScript framework
+# [https://stimulus.hotwired.dev]
+gem "stimulus-rails"
+
+# Integrate Tailwind CSS with the asset pipeline in Rails.
+gem "tailwindcss-rails"
+
+# With Rails 8, Propshaft is the default asset pipeline for new applications.
+gem "propshaft"
+
+# Pseudo `IO` class from/to `String`.
+gem "stringio"
+
+# Sass is a stylesheet language that’s compiled to CSS. It allows you to use variables, nested rules, mixins, functions, and more, all with a fully CSS-compatible syntax.
+gem "dartsass-rails"
+
+# Use JavaScript with ESM import maps
+# [https://github.com/rails/importmap-rails]
+gem "importmap-rails"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
-
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-# Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
-gem "kamal", require: false
-
-# Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
-gem "thruster", require: false
-
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
+# Environment
+gem "dotenv-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "pry"
 
-  # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
-  gem "bundler-audit", require: false
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: "main"
+  end
 
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
-
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem "rubocop-rails-omakase", require: false
-end
-
-group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
+  # annotate
+  gem "annotate"
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
+  # Database Cleaner is a set of gems containing strategies for cleaning your database in Ruby.
+  gem "database_cleaner-active_record"
+
+  # Faker is a ibrary for generating fake data such as names, addresses, and phone numbers.
+  gem "faker"
+
+  # factory_bot is a fixtures replacement
+  gem "factory_bot_rails"
+
+  # request spec helpers
+  gem "rspec-json_expectations"
+  gem "rails-controller-testing"
+
+  # model spec helpers
+  gem "shoulda-matchers"
+
+  gem "rspec_junit_formatter"
+
+  gem "simplecov", require: false
 end
+

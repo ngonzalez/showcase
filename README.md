@@ -10,9 +10,29 @@ Rails showcase web site for Appshare services
 ruby 3.4.9 (2026-03-11 revision 76cca827ab) +PRISM [arm64-darwin23]
 ```
 
-#### Run bundle command
+#### Run bundle install
 ```
 bundle
+```
+
+#### Start puma
+```bash
+bin/puma -t 4:4 -p 3000 ./config.ru
+```
+
+#### Run database migrations
+```bash
+bin/rails db:migrate
+```
+
+#### Precompile assets
+```bash
+bin/rails assets:precompile
+```
+
+#### Start sass
+```bash
+bin/rails tailwindcss:watch
 ```
 
 <a id="daisyui"></a>
