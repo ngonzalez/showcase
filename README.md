@@ -38,6 +38,11 @@ bin/rails tailwindcss:watch
 <a id="daisyui"></a>
 ## [# Daisy UI](#daisyui)
 
+
+#### Tailwind CSS Documentation
+
+[https://v3.tailwindcss.com/docs/installation](https://v3.tailwindcss.com/docs/installation)
+
 #### Install daisyUI for Rails
 
 [https://daisyui.com/docs/install/rails/](https://daisyui.com/docs/install/rails/)
