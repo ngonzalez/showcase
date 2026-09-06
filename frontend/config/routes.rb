@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get "home" => "pages#home", as: "home"
   get "register" => "pages#register", as: "register"
+  get "plans" => "pages#plans", as: "plans"
 
   # Newsletter
   post "/newsletter" => "newsletter#create"
