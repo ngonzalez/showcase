@@ -1,0 +1,174 @@
+<div class="overflow-x-auto" style="margin: auto;">
+  <ul class="steps">
+    <li class="step step-neutral">Register</li>
+    <li class="step step-neutral">Choose plan</li>
+    <li class="step">Purchase</li>
+    <li class="step">Receive Product</li>
+  </ul>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          <!-- -->
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align="center">
+          <label class="input validator" for="user[first_name]">
+            <span class="label">First Name</span>
+            <input required name="user[first_name]" type="text" class="input" required />
+          </label>
+          <div class="validator-hint hidden">Enter valid first name</div>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <label class="input validator" for="user[last_name]">
+            <span class="label">Last Name</span>
+            <input required name="user[last_name]" type="text" class="input" required />
+          </label>
+          <div class="validator-hint hidden">Enter valid last name</div>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <label class="input validator">
+            <span class="label">Email Address</span>
+            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2.5"
+                fill="none"
+                stroke="currentColor"
+              >
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </g>
+            </svg>
+            <input type="email" placeholder="mail@site.com" required />
+          </label>
+          <div class="validator-hint hidden">Enter valid email address</div>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+            <textarea name="user[address]" placeholder="Address" class="textarea"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <label class="select" for="user[address]">
+            <span class="label">Country</span>
+            <select name="user[address]" class="select">
+              <option disabled selected></option>
+              <option>France</option>
+              <option>United States</option>
+              <option>Canada</option>
+            </select>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <label class="select" for="user[plan]">
+            <span class="label">Plan</span>
+            <select name="user[plan]" class="select">
+              <option disabled selected></option>
+              <option>Premium 20GB</option>
+              <option>Premium 50GB</option>
+              <option>Premium 100GB</option>
+            </select>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <label class="input validator">
+            <span class="label">Password</span>
+            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2.5"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
+                ></path>
+                <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+              </g>
+            </svg>
+            <input
+              type="password"
+              required
+              placeholder="Password"
+              minlength="8"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+            />
+          </label>
+          <p class="validator-hint hidden">
+            Must be more than 8 characters, including
+            <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <label class="input validator">
+            <span class="label">Confirmation</span>
+            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2.5"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
+                ></path>
+                <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
+              </g>
+            </svg>
+            <input
+              type="password"
+              required
+              placeholder="Password Confirmation"
+              minlength="8"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+            />
+          </label>
+          <p class="validator-hint hidden">
+            Must be more than 8 characters, including
+            <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <label class="label">
+            <input type="checkbox" checked="checked" class="checkbox" />
+            I have read and accept the terms and conditions
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <!-- -->
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <button class="btn btn-neutral">Register</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

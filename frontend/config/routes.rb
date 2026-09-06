@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
 
+  get "home" => "pages#home", as: "home"
+  get "register" => "pages#register", as: "register"
+
   # Newsletter
   post "/newsletter" => "newsletter#create"
 
