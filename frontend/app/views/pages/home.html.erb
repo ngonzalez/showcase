@@ -1,6 +1,15 @@
 <div class="overflow-x-auto" style="margin: auto;">
   <table class="table">
     <tbody>
+      <% if flash[:notice] %>
+        <tr>
+          <td>
+            <h4 class="p-2" style="font-weight: bold;">
+              <span><%= flash[:notice] %></span>
+            </h4>
+          </td>
+        </tr>
+      <% end %>
       <tr>
         <td align="center">
           <div class="hero bg-base-200 min-h-screen">
@@ -29,12 +38,12 @@
             <div class="collapse collapse-arrow join-item border-base-300 border">
               <input type="radio" name="my-accordion-4" checked="checked" />
               <div class="collapse-title font-semibold">How do I create an account?</div>
-              <div class="collapse-content text-sm">Click the "Sign Up" button in the top right corner and follow the registration process.</div>
+              <div class="collapse-content text-sm">Click the "Get Started" button above and follow the registration process.</div>
             </div>
             <div class="collapse collapse-arrow join-item border-base-300 border">
               <input type="radio" name="my-accordion-4" />
-              <div class="collapse-title font-semibold">I forgot my password. What should I do?</div>
-              <div class="collapse-content text-sm">Click on "Forgot Password" on the login page and follow the instructions sent to your email.</div>
+              <div class="collapse-title font-semibold">I have questions on how the applications work. What should I do?</div>
+              <div class="collapse-content text-sm">Click on "Documentation" on link in the top header.</div>
             </div>
             <div class="collapse collapse-arrow join-item border-base-300 border">
               <input type="radio" name="my-accordion-4" />
