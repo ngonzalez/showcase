@@ -1,7 +1,11 @@
 <div class="overflow-x-auto" style="margin: auto;">
   <ul class="steps">
-    <li class="step step-neutral">Choose plan</li>
-    <li class="step step-neutral">Register</li>
+    <li class="step step-neutral">
+      <%= link_to "Choose Plan", plans_path, style: "text-decoration: underline;" %>
+    </li>
+    <li class="step step-neutral">
+      <%= link_to "Register", register_path(plan: @plan), style: "text-decoration: underline;" %>
+    </li>
     <li class="step">Purchase</li>
     <li class="step">Receive Product</li>
   </ul>
@@ -77,9 +81,12 @@
           <label class="w-96 select" for="user[plan]">
             <span class="label">Plan</span>
             <select name="user[plan]" class="select">
-              <option disabled selected></option>
-              <option>Premium 5GB</option>
-              <option>Premium 10GB</option>
+              <%= options_for_select(
+                {
+                  "Premium #{@plan}" => @plan,
+                },
+                @plan
+              ) %>
             </select>
           </label>
         </td>
@@ -153,7 +160,7 @@
       <tr>
         <td align="center">
           <label class="label">
-            <input type="checkbox" checked="checked" class="checkbox" />
+            <input type="checkbox" class="checkbox" />
             I have read and accept the terms and conditions
           </label>
         </td>
