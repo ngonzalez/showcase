@@ -25,75 +25,14 @@
   </head>
 
   <body>
-    <div class="max-lg:collapse bg-base-200 mb-10 shadow-sm w-full rounded-md">
-      <input id="navbar-1-toggle" class="peer hidden" type="checkbox" />
-      <label for="navbar-1-toggle" class="fixed inset-0 hidden max-lg:peer-checked:block"></label>
-      <div class="collapse-title navbar">
-        <div class="navbar-start">
-          <label for="navbar-1-toggle" class="btn btn-ghost lg:hidden">
-            <svg aria-label="Menu" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-          </label>
-          <button class="btn btn-ghost text-xl"><a href="/home">appshare</a></button>
-        </div>
-        <div class="navbar-center hidden lg:flex">
-          <ul class="menu menu-horizontal px-1">
-            <li><button>Web Publishing Services</button></li>
-            <li>
-              <details>
-                <summary>Download App</summary>
-                <ul class="p-2 bg-base-100 w-40 z-1">
-                  <li><button>MacOS client</button></li>
-                  <li><button>Windows client</button></li>
-                </ul>
-              </details>
-            </li>
-            <li>
-            <button><i class="material-icons">add_call</i>Support</button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <%= render partial: "layouts/header" %>
+
+    <%= render partial: "layouts/alerts" %>
 
     <main class="container mx-auto mb-10 flex">
       <%= yield %>
     </main>
 
-    <footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
-      <nav>
-        <h6 class="footer-title">Services</h6>
-        <a class="link link-hover">Branding</a>
-        <a class="link link-hover">Design</a>
-        <a class="link link-hover">Marketing</a>
-        <a class="link link-hover">Advertisement</a>
-      </nav>
-      <nav>
-        <h6 class="footer-title">Company</h6>
-        <a class="link link-hover">About us</a>
-        <a class="link link-hover">Contact</a>
-        <a class="link link-hover">Jobs</a>
-        <a class="link link-hover">Press kit</a>
-      </nav>
-      <nav>
-        <h6 class="footer-title">Legal</h6>
-        <a class="link link-hover">Terms of use</a>
-        <a class="link link-hover">Privacy policy</a>
-        <a class="link link-hover">Cookie policy</a>
-      </nav>
-      <%= form_with url: newsletter_path do |form| %>
-        <h6 class="footer-title">Newsletter</h6>
-        <fieldset class="w-80">
-          <div class="join">
-            <input
-              required
-              type="email"
-              placeholder="mail@site.com"
-              class="input validator join-item"
-              name="email" />
-            <button class="btn btn-primary join-item">Subscribe</button>
-          </div>
-        </fieldset>
-      <% end %>
-    </footer>
+    <%= render partial: "layouts/footer" %>
   </body>  
 </html>
