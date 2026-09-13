@@ -1,4 +1,4 @@
-<div class="overflow-x-auto" style="margin: auto;">
+<form class="overflow-x-auto" style="margin: auto;" id="registerForm" data-controller="register" data-register-target="registerForm">
   <ul class="steps">
     <li class="step step-neutral">
       <%= link_to "Choose Plan", plans_path, style: "text-decoration: underline;" %>
@@ -14,31 +14,41 @@
     <thead>
       <tr>
         <th>
-          <!-- -->
         </th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td align="center">
+          <!-- First Name -->
           <label class="w-96 input validator" for="user[first_name]">
             <span class="label">First Name</span>
-            <input required name="user[first_name]" type="text" class="input" required />
+            <input data-action="input->register#input"
+                   required
+                   name="user[firstName]"
+                   type="text"
+                   class="input" />
           </label>
-          <div class="validator-hint hidden">Enter valid first name</div>
+          <div class="validator-hint hidden">Enter a valid first name</div>
         </td>
       </tr>
       <tr>
         <td align="center">
+          <!-- Last Name -->
           <label class="w-96 input validator" for="user[last_name]">
             <span class="label">Last Name</span>
-            <input required name="user[last_name]" type="text" class="input" required />
+            <input data-action="input->register#input"
+                   required
+                   name="user[lastName]"
+                   type="text"
+                   class="input" />
           </label>
-          <div class="validator-hint hidden">Enter valid last name</div>
+          <div class="validator-hint hidden">Enter a valid last name</div>
         </td>
       </tr>
       <tr>
         <td align="center">
+          <!-- Email Address -->
           <label class="w-96 input validator">
             <span class="label">Email Address</span>
             <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -47,40 +57,55 @@
                 stroke-linecap="round"
                 stroke-width="2.5"
                 fill="none"
-                stroke="currentColor"
-              >
+                stroke="currentColor">
                 <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </g>
             </svg>
-            <input type="email" placeholder="mail@site.com" required />
+            <input data-action="input->register#input"
+                   required
+                   name="user[emailAddress]"
+                   type="email"
+                   placeholder="mail@site.com" />
           </label>
-          <div class="validator-hint hidden">Enter valid email address</div>
+          <div class="validator-hint hidden">Enter a valid email address</div>
         </td>
       </tr>
       <tr>
         <td align="center">
-          <textarea name="user[address]" placeholder="Address" class="w-96 textarea" required></textarea>
+          <!-- Address -->
+          <textarea data-action="input->register#input"
+                    required
+                    name="user[address]"
+                    class="w-96 textarea"
+                    placeholder="Address"></textarea>
         </td>
       </tr>
       <tr>
         <td align="center">
-          <label class="w-96 select" for="user[address]">
+          <label class="w-96 select validator" for="user[country]">
             <span class="label">Country</span>
-            <select name="user[address]" class="select">
+            <select data-action="change->register#input"
+                    required
+                    name="user[country]"
+                    class="select select-neutral">
               <option disabled selected></option>
               <option>France</option>
               <option>United States</option>
               <option>Canada</option>
             </select>
           </label>
+          <div class="validator-hint hidden">Select a valid country</div>
         </td>
       </tr>
       <tr>
         <td align="center">
-          <label class="w-96 select for="user[plan]">
+          <label class="w-96 select validator" for="user[plan]">
             <span class="label">Plan</span>
-            <select name="user[plan]" class="select">
+            <select data-action="change->register#input"
+                    required
+                    name="user[plan]"
+                    class="select select-neutral">
               <%= options_for_select(
                 {
                   "Premium #{@plan}" => @plan,
@@ -89,6 +114,7 @@
               ) %>
             </select>
           </label>
+          <div class="validator-hint hidden">Select a valid plan</div>
         </td>
       </tr>
       <tr>
@@ -112,6 +138,7 @@
             <input
               type="password"
               required
+              name="user[password]"
               placeholder="Password"
               minlength="8"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -145,11 +172,11 @@
             <input
               type="password"
               required
+              name="user[passwordConfirmation]"
               placeholder="Password Confirmation"
               minlength="8"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
-            />
+              title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
           </label>
           <p class="validator-hint hidden">
             Must be more than 8 characters, including
@@ -160,16 +187,21 @@
       <tr>
         <td align="center">
           <label class="label">
-            <input type="checkbox" class="checkbox" />
+            <input type="checkbox"
+                   data-action="change->register#inputChanged"
+                   name="user[agreeToTermsAndConditions]"
+                   class="checkbox" />
             I have read and accept the terms and conditions
           </label>
         </td>
       </tr>
       <tr>
         <td align="center">
-          <button class="btn btn-neutral">Register</button>
+          <input type="submit"
+                 data-action="click->register#submit"
+                 class="btn btn-neutral" />
         </td>
       </tr>
     </tbody>
   </table>
-</div>
+</form>
