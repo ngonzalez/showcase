@@ -1,5 +1,5 @@
 # Showcase Web Site
-Rails showcase web site for Appshare services
+Public showcase web site for Appshare services
 
 <a id="rails"></a>
 ## [# Ruby on Rails](#rails)
