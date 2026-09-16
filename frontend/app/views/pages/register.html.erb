@@ -1,4 +1,9 @@
-<form class="overflow-x-auto" style="margin: auto;" id="registerForm" data-controller="register" data-register-target="registerForm">
+<form class="overflow-x-auto"
+      style="margin: auto;"
+      id="registerForm"
+      data-controller="register"
+      data-register-target="registerForm">
+
   <ul class="steps">
     <li class="step step-neutral">
       <%= link_to "Choose Plan", plans_path, style: "text-decoration: underline;" %>
@@ -6,8 +11,8 @@
     <li class="step step-neutral">
       <%= link_to "Register", register_path(plan: @plan), style: "text-decoration: underline;" %>
     </li>
-    <li class="step">Purchase</li>
-    <li class="step">Receive Product</li>
+    <li class="step">Validate</li>
+    <li class="step">Complete</li>
   </ul>
 
   <table class="table">

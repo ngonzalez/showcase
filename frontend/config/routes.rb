@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get "register" => "pages#register", as: "register"
   get "plans" => "pages#plans", as: "plans"
 
+  # Documentation
+  get "documentation" => "documentation#index", as: "documentation"
+
   # Newsletter
   post "newsletter" => "newsletter#create", as: "newsletter"
 
