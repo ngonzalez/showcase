@@ -17,7 +17,7 @@ bundle
 
 #### Start puma
 ```bash
-bin/puma -t 4:4 -p 3000 ./config.ru
+bin/puma -t 4:4 -b tcp://127.0.0.1:3000 ./config.ru
 ```
 
 #### Run database migrations
@@ -41,7 +41,7 @@ bin/rails tailwindcss:watch
 
 #### Tailwind CSS Documentation
 
-[https://v3.tailwindcss.com/docs/installation](https://v3.tailwindcss.com/docs/installation)
+[https://v3.tailwindcss.com/docs/installation/](https://v3.tailwindcss.com/docs/installation/)
 
 #### Install daisyUI for Rails
 
