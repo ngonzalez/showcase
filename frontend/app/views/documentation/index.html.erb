@@ -1,17 +1,40 @@
-<div class="drawer drawer-open mt-4">
+<div class="drawer drawer-open mt-4"
+     style="margin: auto;"
+     id="documentationPage"
+     data-controller="documentation"
+     data-documentation-target="documentationPage">
   <input id="my-drawer-1" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content">
     <div class="font-title text-2xl md:text-3xl lg:text-4xl font-bold ml-10 mt-4">
       <!-- Page content here -->
       Documentation
+      <span name="section"></span>
     </div>
   </div>
   <div class="drawer-side">
     <label for="my-drawer-1" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul class="menu bg-base-200 min-h-full w-80 mt-4">
+    <ul id="documentationMenu" class="menu bg-base-200 min-h-full w-80 mt-4">
       <!-- Sidebar content here -->
-      <li style="background-color:#DDD;color:#555;border-radius:20px;"><a><div aria-label="status" class="status status-primary"></div>Sidebar Item 1</a></li>
-      <li><a><div aria-label="status" class="status status-primary"></div>Sidebar Item 2</a></li>
+      <li data-action="click->documentation#clickSidebarMenu">
+        <a href="#item1">
+          <div aria-label="status" class="status status-primary"></div>
+          Sidebar Item 1
+        </a>
+      </li>
+      <li data-action="click->documentation#clickSidebarMenu">
+        <a href="#item2">
+          <div aria-label="status" class="status status-primary"></div>
+          Sidebar Item 2
+        </a>
+      </li>
     </ul>
   </div>
 </div>
+
+<style type="text/css">
+  .active {
+    background-color: #DDDDDD;
+    color: #555555;
+    border-radius: 20px;
+  }
+</style>
