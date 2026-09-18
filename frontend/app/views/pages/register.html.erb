@@ -40,7 +40,7 @@
                   <circle cx="12" cy="7" r="4"></circle>
                 </g>
               </svg>
-              First Name
+              First name
             </span>
             <input data-action="input->register#input"
                    required
@@ -72,7 +72,7 @@
                   <circle cx="12" cy="7" r="4"></circle>
                 </g>
               </svg>
-              Last Name
+              Last name
             </span>
             <input data-action="input->register#input"
                    required
@@ -103,7 +103,7 @@
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </g>
               </svg>
-              Email Address
+              Email address
             </span>
             <input data-action="input->register#input"
                    required
@@ -121,7 +121,49 @@
                     required
                     name="user[address]"
                     class="w-96 textarea"
-                    placeholder="Address"></textarea>
+                    pattern="[A-Za-z][A-Za-z0-9\- ]*"
+                    title="Only letters, numbers or dash"
+                    placeholder="Address: 123 Jane Doe st."></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <!-- Last Name -->
+          <label class="w-96 input validator" for="user[postalCode]">
+            <span class="label" style="background:#FEFEFE;border-radius:20px;">
+              Postal code
+            </span>
+            <input data-action="input->register#input"
+                   required
+                   name="user[postalCode]"
+                   type="text"
+                   class="input"
+                   pattern="[A-Za-z0-9][A-Za-z0-9\- ]*"
+                   minlength="3"
+                   maxlength="30"
+                   title="Only letters, numbers or dash" />
+          </label>
+          <div class="validator-hint hidden">Enter a valid postal code</div>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <!-- Last Name -->
+          <label class="w-96 input validator" for="user[city]">
+            <span class="label" style="background:#FEFEFE;border-radius:20px;">
+              City
+            </span>
+            <input data-action="input->register#input"
+                   required
+                   name="user[city]"
+                   type="text"
+                   class="input"
+                   pattern="[A-Za-z][A-Za-z0-9\- ]*"
+                   minlength="3"
+                   maxlength="30"
+                   title="Only letters, numbers or dash" />
+          </label>
+          <div class="validator-hint hidden">Enter a valid city</div>
         </td>
       </tr>
       <tr>

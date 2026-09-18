@@ -14,7 +14,7 @@ export default class extends Controller {
   }
 
   input(event) {
-    _.each(['firstName', 'lastName', 'emailAddress', 'address', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
+    _.each(['firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
       if (event.target.name == "user[" + attribute + "]") {
         this.user[attribute] = event.target.value
       }
@@ -33,15 +33,16 @@ export default class extends Controller {
 
   validateForm() {
     this.valid = true
-    _.each(['firstName', 'lastName', 'emailAddress', 'address', 'country', 'password', 'passwordConfirmation', 'agreeToTermsAndConditions'], (attribute, index) => {
+    _.each(['firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation', 'agreeToTermsAndConditions'], (attribute, index) => {
       if (typeof this.user[attribute] == "undefined" || this.user[attribute] == false) {
         this.valid = false
       }
     })
+    const submitBtn = this.registerFormTarget.querySelectorAll('[name="submitButton"]')[0]
     if (this.valid) {
-      this.registerFormTarget.querySelectorAll('[name="submitButton"]')[0].classList.add('btn-neutral')
+      submitBtn.classList.add('btn-neutral')
     } else {
-      this.registerFormTarget.querySelectorAll('[name="submitButton"]')[0].classList.remove('btn-neutral')
+      submitBtn.classList.remove('btn-neutral')
     }
   }
 
