@@ -6,9 +6,11 @@ export default class extends Controller {
 
   connect() {
     _.each(document.getElementById('documentationMenu').querySelectorAll('li.menu-link'), (element, index) => {
-      if (index == 0) {
+      let link = element.querySelectorAll('a')[0]
+      if ((document.location.hash != '') && (typeof(link) != 'undefined') && (link.getAttribute('href') == document.location.hash)) {
         element.classList.add('active')
-        this.documentationPageTarget.querySelectorAll('[name="section"]')[0].innerHTML = element.getElementsByTagName('a')[0].getAttribute('href')
+        let section = this.documentationPageTarget.querySelectorAll('[name="section"]')[0]
+        section.innerHTML = element.getElementsByTagName('a')[0].getAttribute('href')
       }
     })
   }
@@ -18,6 +20,7 @@ export default class extends Controller {
       element.classList.remove('active')
     })
     event.target.parentNode.classList.add('active')
-    this.documentationPageTarget.querySelectorAll('[name="section"]')[0].innerHTML = event.target.getAttribute('href')
+    let section = this.documentationPageTarget.querySelectorAll('[name="section"]')[0]
+    section.innerHTML = event.target.getAttribute('href')
   }
 }
