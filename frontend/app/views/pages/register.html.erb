@@ -27,15 +27,14 @@
         <td align="center">
           <!-- First Name -->
           <label class="w-96 input validator" for="user[first_name]">
-            <span class="label" style="background:#FEFEFE;border-radius:20px;">
+            <span class="label white-rounded">
               <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g
                   stroke-linejoin="round"
                   stroke-linecap="round"
                   stroke-width="2.5"
                   fill="none"
-                  stroke="currentColor"
-                >
+                  stroke="currentColor">
                   <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </g>
@@ -59,15 +58,14 @@
         <td align="center">
           <!-- Last Name -->
           <label class="w-96 input validator" for="user[last_name]">
-            <span class="label" style="background:#FEFEFE;border-radius:20px;">
+            <span class="label white-rounded">
               <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g
                   stroke-linejoin="round"
                   stroke-linecap="round"
                   stroke-width="2.5"
                   fill="none"
-                  stroke="currentColor"
-                >
+                  stroke="currentColor">
                   <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </g>
@@ -91,7 +89,7 @@
         <td align="center">
           <!-- Email Address -->
           <label class="w-96 input validator">
-            <span class="label" style="background:#FEFEFE;border-radius:20px;">
+            <span class="label white-rounded">
               <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g
                   stroke-linejoin="round"
@@ -130,7 +128,7 @@
         <td align="center">
           <!-- Last Name -->
           <label class="w-96 input validator" for="user[postalCode]">
-            <span class="label" style="background:#FEFEFE;border-radius:20px;">
+            <span class="label white-rounded">
               Postal code
             </span>
             <input data-action="input->register#input"
@@ -150,7 +148,7 @@
         <td align="center">
           <!-- Last Name -->
           <label class="w-96 input validator" for="user[city]">
-            <span class="label" style="background:#FEFEFE;border-radius:20px;">
+            <span class="label white-rounded">
               City
             </span>
             <input data-action="input->register#input"
@@ -169,7 +167,7 @@
       <tr>
         <td align="center">
           <label class="w-96 select validator" for="user[country]">
-            <span class="label" style="background:#FEFEFE;border-radius:20px;">
+            <span class="label white-rounded">
             Country
             </span>
             <select data-action="change->register#input"
@@ -188,7 +186,7 @@
       <tr>
         <td align="center">
           <label class="w-96 select validator" for="user[plan]">
-            <span class="label" style="background:#FEFEFE;border-radius:20px;">
+            <span class="label white-rounded">
             Plan
             </span>
             <select data-action="change->register#input"
@@ -209,15 +207,14 @@
       <tr>
         <td align="center">
           <label class="w-96 input validator">
-            <span class="label" style="background:#FEFEFE;border-radius:20px;">
+            <span class="label white-rounded">
               <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g
                   stroke-linejoin="round"
                   stroke-linecap="round"
                   stroke-width="2.5"
                   fill="none"
-                  stroke="currentColor"
-                >
+                  stroke="currentColor">
                   <path
                     d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"
                   ></path>
@@ -246,7 +243,7 @@
       <tr>
         <td align="center">
           <label class="w-96 input validator">
-            <span class="label" style="background:#FEFEFE;border-radius:20px;">
+            <span class="label white-rounded">
               <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g
                   stroke-linejoin="round"
@@ -301,3 +298,10 @@
     </tbody>
   </table>
 </form>
+
+<style type="text/css">
+  .white-rounded {
+    background: #FEFEFE;
+    border-radius: 20px;
+  }
+</style>
