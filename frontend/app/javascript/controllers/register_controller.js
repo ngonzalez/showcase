@@ -6,8 +6,18 @@ export default class extends Controller {
 
   connect() {
     this.user = {}
-    this.selectedForm = 'company'
+    this.selectedForm = 'person'
     this.toggleCompanyForm()
+    _.each(this.registerFormTarget.querySelectorAll('[name="user[accountType]"]'), (element, index) => {
+      if (element.value == this.selectedForm) {
+        element.checked = true
+        _.each(element.parentNode.querySelectorAll('label'), (item, i) => {
+          item.style = "text-decoration:underline;"
+        })
+      }
+    })
+
+
     _.each(['plan'], (attribute, index) => {
       if (this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]').length > 0) {
         this.user[attribute] = this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]')[0].value
