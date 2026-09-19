@@ -24,9 +24,59 @@
     </thead>
     <tbody>
       <tr>
+        <td align="center" class="w-96">
+          <table>
+            <tr>
+              <td>
+                <input data-action="input->register#radioSelect"
+                       type="radio"
+                       name="user[accountType]"
+                       value="company"
+                       class="radio radio-info"
+                       checked="checked" />
+                <label data-action="click->register#labelClicked"
+                       for="user[accountType]"
+                       class="label">Company</label>
+              </td>
+              <td>
+                <!-- -->
+              </td>
+              <td>
+                <input data-action="input->register#radioSelect"
+                       type="radio"
+                       name="user[accountType]"
+                       value="person"
+                       class="radio radio-info" />
+                <label data-action="click->register#labelClicked"
+                       for="user[accountType]"
+                       class="label">Person</label>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <!-- Last Name -->
+          <label class="w-96 input validator" for="user[companyName]">
+            <span class="label white-rounded">
+              Company name
+            </span>
+            <input data-action="input->register#input"
+                   name="user[companyName]"
+                   type="text"
+                   class="input"
+                   pattern="[A-Za-z][A-Za-z0-9\-]*"
+                   minlength="3"
+                   maxlength="30"
+                   title="Only letters, numbers or dash" />
+          </label>
+        </td>
+      </tr>
+      <tr>
         <td align="center">
           <!-- First Name -->
-          <label class="w-96 input validator" for="user[first_name]">
+          <label class="w-96 input validator" for="user[firstName]">
             <span class="label white-rounded">
               <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g
@@ -57,7 +107,7 @@
       <tr>
         <td align="center">
           <!-- Last Name -->
-          <label class="w-96 input validator" for="user[last_name]">
+          <label class="w-96 input validator" for="user[lastName]">
             <span class="label white-rounded">
               <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g
@@ -88,7 +138,7 @@
       <tr>
         <td align="center">
           <!-- Email Address -->
-          <label class="w-96 input validator">
+          <label class="w-96 input validator" for="user[emailAddress]">
             <span class="label white-rounded">
               <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g

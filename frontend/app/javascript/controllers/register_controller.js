@@ -6,6 +6,7 @@ export default class extends Controller {
 
   connect() {
     this.user = {}
+    this.selectedForm = ''
     _.each(['plan'], (attribute, index) => {
       if (this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]').length > 0) {
         this.user[attribute] = this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]')[0].value
@@ -29,6 +30,33 @@ export default class extends Controller {
       }
     })
     this.validateForm()
+  }
+
+  radioSelect(event) {
+    this.selectRadioEvent(event)
+    console.log(this.selectedForm)
+  }
+
+  labelClicked(event) {
+    this.selectRadioEvent(event)
+    console.log(this.selectedForm)
+  }
+
+  selectRadioEvent(event) {
+    event.preventDefault()
+    _.each(this.registerFormTarget.querySelectorAll('[name="user[accountType]"]'), (element, index) => {
+      element.checked = false
+      _.each(element.parentNode.querySelectorAll('label'), (item, i) => {
+        item.style = "text-decoration:none;"
+      })
+    })
+    _.each(event.target.parentNode.querySelectorAll('[name="user[accountType]"]'), (element, index) => {
+      element.checked = true
+      this.selectedForm = element.value
+      _.each(event.target.parentNode.querySelectorAll('label'), (item, i) => {
+        item.style = "text-decoration:underline;"
+      })
+    })
   }
 
   validateForm() {
