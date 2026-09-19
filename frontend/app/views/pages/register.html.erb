@@ -64,6 +64,7 @@
               Company name
             </span>
             <input data-action="input->register#input"
+                   required
                    name="user[companyName]"
                    type="text"
                    class="input"
@@ -268,15 +269,14 @@
               </svg>
               Password
             </span>
-            <input
-              data-action="change->register#input"
-              required
-              name="user[password]"
-              type="password"
-              placeholder="Password"
-              minlength="8"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+            <input data-action="change->register#input"
+                   required
+                   name="user[password]"
+                   type="password"
+                   placeholder="Password"
+                   minlength="8"
+                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                   title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
             />
           </label>
           <p class="validator-hint hidden">
@@ -304,15 +304,14 @@
               </svg>
               Password confirmation
             </span>
-            <input
-              data-action="change->register#input"
-              required
-              name="user[passwordConfirmation]"
-              type="password"
-              placeholder="Password confirmation"
-              minlength="8"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
+            <input data-action="change->register#input"
+                   required
+                   name="user[passwordConfirmation]"
+                   type="password"
+                   placeholder="Password confirmation"
+                   minlength="8"
+                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                   title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
           </label>
           <p class="validator-hint hidden">
             Must be more than 8 characters, including
