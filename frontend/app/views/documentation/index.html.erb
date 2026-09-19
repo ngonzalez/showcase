@@ -11,13 +11,13 @@
       <span name="section"></span>
     </div>
   </div>
-  <div class="drawer-side" style="overflow:hidden">
+  <div class="drawer-side" style="overflow:hidden;">
     <label for="my-drawer-1" aria-label="close sidebar" class="drawer-overlay"></label>
     <ul id="documentationMenu" class="menu menu-sm bg-base-200 min-h-full m-4 rounded-box">
       <!-- Sidebar content here -->
       <li data-action="click->documentation#clickSidebarMenu" class="menu-link">
         <a href="#desktop-application">
-          <div class="inline-grid *:[grid-area:1/1]">
+          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]" style="visibility:hidden;">
             <div class="status status-primary animate-ping"></div>
             <div class="status status-primary"></div>
           </div>
@@ -27,24 +27,36 @@
       <li>
         <ul class="bg-base-200 rounded-box m-4">
           <li data-action="click->documentation#clickSidebarMenu" class="menu-link">
-            <a href="#quick-start">Quick start</a>
+            <a href="#quick-start">
+              <div aria-label="status" class="status" style="visibility:hidden;"></div>
+              Quick start
+            </a>
           </li>
           <li>
             <details open>
               <summary>macOS</summary>
               <ul>
                 <li data-action="click->documentation#clickSidebarMenu" class="menu-link">
-                  <a href="#install-macos">Install</a>
+                  <a href="#install-macos">
+                    <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                    Install
+                  </a>
                 </li>
                 <li>
                   <details open>
                     <summary>How to</summary>
                     <ul>
                       <li data-action="click->documentation#clickSidebarMenu" class="menu-link">
-                        <a href="#download-macos">Download from the app store</a>
+                        <a href="#download-macos">
+                          <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                          Download from the app store
+                        </a>
                       </li>
                       <li data-action="click->documentation#clickSidebarMenu" class="menu-link">
-                        <a href="#authorize-macos">Authorize the application</a>
+                        <a href="#authorize-macos">
+                          <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                          Authorize the application
+                        </a>
                       </li>
                     </ul>
                   </details>
@@ -57,17 +69,26 @@
               <summary>Windows</summary>
               <ul>
                 <li data-action="click->documentation#clickSidebarMenu" class="menu-link">
-                  <a href="#install-windows">Install</a>
+                  <a href="#install-windows">
+                    <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                    Install
+                  </a>
                 </li>
                 <li>
                   <details open>
                     <summary>How to</summary>
                     <ul>
                       <li data-action="click->documentation#clickSidebarMenu" class="menu-link">
-                        <a href="#download-windows">Download from the windows store</a>
+                        <a href="#download-windows">
+                          <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                          Download from the windows store
+                        </a>
                       </li>
                       <li data-action="click->documentation#clickSidebarMenu" class="menu-link">
-                        <a href="#authorize-windows">Authorize the application</a>
+                        <a href="#authorize-windows">
+                          <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                          Authorize the application
+                        </a>
                       </li>
                     </ul>
                   </details>
@@ -79,7 +100,7 @@
       </li>
       <li data-action="click->documentation#clickSidebarMenu" class="menu-link">
         <a href="#web-application">
-          <div class="inline-grid *:[grid-area:1/1]">
+          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]" style="visibility:hidden;">
             <div class="status status-primary animate-ping"></div>
             <div class="status status-primary"></div>
           </div>
