@@ -6,7 +6,8 @@ export default class extends Controller {
 
   connect() {
     this.user = {}
-    this.selectedForm = ''
+    this.selectedForm = 'company'
+    this.toggleCompanyForm()
     _.each(['plan'], (attribute, index) => {
       if (this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]').length > 0) {
         this.user[attribute] = this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]')[0].value
@@ -34,12 +35,12 @@ export default class extends Controller {
 
   radioSelect(event) {
     this.selectRadioEvent(event)
-    console.log(this.selectedForm)
+    this.toggleCompanyForm()
   }
 
   labelClicked(event) {
     this.selectRadioEvent(event)
-    console.log(this.selectedForm)
+    this.toggleCompanyForm()
   }
 
   selectRadioEvent(event) {
@@ -58,6 +59,30 @@ export default class extends Controller {
       })
     })
   }
+  
+  toggleCompanyForm() {
+    _.each(this.registerFormTarget.querySelectorAll('[name="user[companyName]"]'), (element, index) => {
+      if (this.selectedForm == 'company') {
+        element.parentNode.parentNode.style.display = 'block'
+      } else {
+        element.parentNode.parentNode.style.display = 'none'
+      }
+    })
+    _.each(this.registerFormTarget.querySelectorAll('[name="user[firstName]"]'), (element, index) => {
+      if (this.selectedForm == 'person') {
+        element.parentNode.parentNode.style.display = 'block'
+      } else {
+        element.parentNode.parentNode.style.display = 'none'
+      }
+    })
+    _.each(this.registerFormTarget.querySelectorAll('[name="user[lastName]"]'), (element, index) => {
+      if (this.selectedForm == 'person') {
+        element.parentNode.parentNode.style.display = 'block'
+      } else {
+        element.parentNode.parentNode.style.display = 'none'
+      }
+    })
+  }
 
   validateForm() {
     this.valid = true
@@ -67,11 +92,7 @@ export default class extends Controller {
       }
     })
     const submitBtn = this.registerFormTarget.querySelectorAll('[name="submitButton"]')[0]
-    if (this.valid) {
-      submitBtn.classList.add('btn-neutral')
-    } else {
-      submitBtn.classList.remove('btn-neutral')
-    }
+    this.valid ? submitBtn.classList.add('btn-neutral') : submitBtn.classList.remove('btn-neutral')
   }
 
   submit(event) {
