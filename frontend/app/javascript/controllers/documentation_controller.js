@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = [ 'documentationPage']
 
   connect() {
-    _.each(document.getElementById('documentationMenu').getElementsByTagName('li'), (element, index) => {
+    _.each(document.getElementById('documentationMenu').querySelectorAll('li.menu-link'), (element, index) => {
       if (index == 0) {
         element.classList.add('active')
         this.documentationPageTarget.querySelectorAll('[name="section"]')[0].innerHTML = element.getElementsByTagName('a')[0].getAttribute('href')
@@ -14,7 +14,7 @@ export default class extends Controller {
   }
   
   clickSidebarMenu(event) {
-    _.each(document.getElementById('documentationMenu').getElementsByTagName('li'), (element, index) => {
+    _.each(document.getElementById('documentationMenu').querySelectorAll('li.menu-link'), (element, index) => {
       element.classList.remove('active')
     })
     event.target.parentNode.classList.add('active')

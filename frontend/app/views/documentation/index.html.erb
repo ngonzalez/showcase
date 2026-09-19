@@ -13,18 +13,63 @@
   </div>
   <div class="drawer-side" style="overflow:hidden">
     <label for="my-drawer-1" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul id="documentationMenu" class="menu bg-base-200 min-h-full w-80 mt-4">
+    <ul id="documentationMenu" class="menu bg-base-200 min-h-full m-4 rounded-box">
       <!-- Sidebar content here -->
-      <li data-action="click->documentation#clickSidebarMenu">
-        <a href="#item1">
-          <div aria-label="status" class="status status-primary"></div>
-          Sidebar Item 1
+      <li data-action="click->documentation#clickSidebarMenu" class="menu-link">
+        <a href="#quick-start">
+          <div class="inline-grid *:[grid-area:1/1]">
+            <div class="status status-primary animate-ping"></div>
+            <div class="status status-primary"></div>
+          </div>
+          Quick start
         </a>
       </li>
-      <li data-action="click->documentation#clickSidebarMenu">
-        <a href="#item2">
-          <div aria-label="status" class="status status-primary"></div>
-          Sidebar Item 2
+      <li>
+        <ul class="menu bg-base-200 rounded-box m-4">
+          <li data-action="click->documentation#clickSidebarMenu" class="menu-link"><a href="#desktop-app">Use the desktop application</a></li>
+          <li>
+            <details open>
+              <summary>macOS</summary>
+              <ul>
+                <li data-action="click->documentation#clickSidebarMenu" class="menu-link"><a href="#install-macos">Install</a></li>
+                <li>
+                  <details open>
+                    <summary>How to</summary>
+                    <ul>
+                      <li data-action="click->documentation#clickSidebarMenu" class="menu-link"><a href="#download-macos">Download from the app store</a></li>
+                      <li data-action="click->documentation#clickSidebarMenu" class="menu-link"><a href="#authorize-macos">Authorize the application</a></li>
+                    </ul>
+                  </details>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details open>
+              <summary>Windows</summary>
+              <ul>
+                <li data-action="click->documentation#clickSidebarMenu" class="menu-link"><a href="#install-windows">Install</a></li>
+                <li>
+                  <details open>
+                    <summary>How to</summary>
+                    <ul>
+                      <li data-action="click->documentation#clickSidebarMenu" class="menu-link"><a href="#download-windows">Download from the windows store</a></li>
+                      <li data-action="click->documentation#clickSidebarMenu" class="menu-link"><a href="#authorize-windows">Authorize the application</a></li>
+                    </ul>
+                  </details>
+                </li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </li>
+      <li data-action="click->documentation#clickSidebarMenu" class="menu-link">
+        <a href="#web-admin">
+          <div class="inline-grid *:[grid-area:1/1]">
+            <div class="status status-primary animate-ping"></div>
+            <div class="status status-primary"></div>
+          </div>
+          Use the web admin
         </a>
       </li>
     </ul>
