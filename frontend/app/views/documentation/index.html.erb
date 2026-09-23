@@ -12,8 +12,17 @@
   </div>
   <div class="drawer-side">
     <label for="my-drawer-1" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul id="documentationMenu" class="menu-sm bg-base-200 min-h-full m-8">
+    <ul id="documentationMenu" class="menu-sm min-h-full m-8">
       <!-- Sidebar content here -->
+      <li data-action="click->documentation#clickSidebarMenu">
+        <a href="#documentation-index" class="menu-link">
+          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+            <div class="status status-primary animate-ping"></div>
+            <div class="status status-primary"></div>
+          </div>
+          Index
+        </a>
+      </li>
       <li data-action="click->documentation#clickSidebarMenu">
         <a href="#desktop-application" class="menu-link">
           <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
@@ -24,7 +33,7 @@
         </a>
       </li>
       <li>
-        <ul class="bg-base-200 m-4">
+        <ul class="p-2">
           <li data-action="click->documentation#clickSidebarMenu">
             <a href="#quick-start" class="menu-link">
               <div aria-label="status" class="status"></div>
@@ -111,6 +120,10 @@
 </div>
 
 <style type="text/css">
+  #documentationMenu {
+    background-color: #FAFAFA;
+    border: 1px solid #EEE;
+  }
   div.drawer {
     margin: 10px auto;
   }
