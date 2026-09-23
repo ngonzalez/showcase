@@ -39,22 +39,21 @@ export default class extends Controller {
   }
   
   clickSidebarMenu(event) {
-    _.each(document.getElementById('documentationMenu').querySelectorAll('a.menu-link'), (element, index) => {
-      element.classList.remove('active')
-
-      let statusElement = element.querySelectorAll('[aria-label="status"]')[0]
-      if (typeof statusElement != 'undefined') {
-        statusElement.style.visibility = 'hidden'
-      }
-
-      let statusAnimatedElement = element.querySelectorAll('[aria-label="status-animated"]')[0]
-      if (typeof statusAnimatedElement != 'undefined') {
-        statusAnimatedElement.style.visibility = 'hidden'
-      }
-    })
-
     const anchor = event.target.getAttribute('href')
     if (anchor) {
+      _.each(document.getElementById('documentationMenu').querySelectorAll('a.menu-link'), (element, index) => {
+        element.classList.remove('active')
+
+        let statusElement = element.querySelectorAll('[aria-label="status"]')[0]
+        if (typeof statusElement != 'undefined') {
+          statusElement.style.visibility = 'hidden'
+        }
+
+        let statusAnimatedElement = element.querySelectorAll('[aria-label="status-animated"]')[0]
+        if (typeof statusAnimatedElement != 'undefined') {
+          statusAnimatedElement.style.visibility = 'hidden'
+        }
+      })
       event.target.parentNode.classList.add('active')
       let sectionElement = this.documentationPageTarget.querySelectorAll('[name="section"]')[0]
       sectionElement.innerHTML = event.target.getAttribute('href')
