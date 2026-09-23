@@ -19,11 +19,10 @@ export default class extends Controller {
       }
     })
     _.each(document.getElementById('documentationMenu').querySelectorAll('a.menu-link'), (element, index) => {
-      let link = element.querySelectorAll('a')[0]
-      if ((document.location.hash != '') && (typeof(link) != 'undefined') && (link.getAttribute('href') == document.location.hash)) {
+      if ((document.location.hash != '') && (element.getAttribute('href') == document.location.hash)) {
         element.classList.add('active')
         let section = this.documentationPageTarget.querySelectorAll('[name="section"]')[0]
-        section.innerHTML = element.getElementsByTagName('a')[0].getAttribute('href')
+        section.innerHTML = element.getAttribute('href')
 
         let statusElement = element.querySelectorAll('[aria-label="status"]')[0]
         if (typeof statusElement != 'undefined') {
