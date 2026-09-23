@@ -36,7 +36,7 @@ export default class extends Controller {
       }
     })
   }
-  
+
   clickSidebarMenu(event) {
     const anchor = event.target.getAttribute('href')
     if (anchor) {
@@ -53,7 +53,7 @@ export default class extends Controller {
           statusAnimatedElement.style.visibility = 'hidden'
         }
       })
-      event.target.parentNode.classList.add('active')
+      event.target.classList.add('active')
       let sectionElement = this.documentationPageTarget.querySelectorAll('[name="section"]')[0]
       sectionElement.innerHTML = event.target.getAttribute('href')
 

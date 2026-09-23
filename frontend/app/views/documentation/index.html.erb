@@ -1,5 +1,4 @@
 <div class="drawer drawer-open"
-     style="margin: 10px auto;"
      id="documentationPage"
      data-controller="documentation"
      data-documentation-target="documentationPage">
@@ -11,13 +10,13 @@
       <span name="section"></span>
     </div>
   </div>
-  <div class="drawer-side" style="overflow:hidden;">
+  <div class="drawer-side">
     <label for="my-drawer-1" aria-label="close sidebar" class="drawer-overlay"></label>
     <ul id="documentationMenu" class="menu-sm bg-base-200 min-h-full m-8">
       <!-- Sidebar content here -->
       <li data-action="click->documentation#clickSidebarMenu">
         <a href="#desktop-application" class="menu-link">
-          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]" style="visibility:hidden;">
+          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
             <div class="status status-primary animate-ping"></div>
             <div class="status status-primary"></div>
           </div>
@@ -28,7 +27,7 @@
         <ul class="bg-base-200 m-4">
           <li data-action="click->documentation#clickSidebarMenu">
             <a href="#quick-start" class="menu-link">
-              <div aria-label="status" class="status" style="visibility:hidden;"></div>
+              <div aria-label="status" class="status"></div>
               Quick start
             </a>
           </li>
@@ -38,7 +37,7 @@
               <ul>
                 <li data-action="click->documentation#clickSidebarMenu">
                   <a href="#install-macos" class="menu-link">
-                    <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                    <div aria-label="status" class="status"></div>
                     Install
                   </a>
                 </li>
@@ -48,13 +47,13 @@
                     <ul>
                       <li data-action="click->documentation#clickSidebarMenu">
                         <a href="#download-macos" class="menu-link">
-                          <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                          <div aria-label="status" class="status"></div>
                           Download from the app store
                         </a>
                       </li>
                       <li data-action="click->documentation#clickSidebarMenu">
                         <a href="#authorize-macos" class="menu-link">
-                          <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                          <div aria-label="status" class="status"></div>
                           Authorize the application
                         </a>
                       </li>
@@ -70,7 +69,7 @@
               <ul>
                 <li data-action="click->documentation#clickSidebarMenu">
                   <a href="#install-windows" class="menu-link">
-                    <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                    <div aria-label="status" class="status"></div>
                     Install
                   </a>
                 </li>
@@ -80,13 +79,13 @@
                     <ul>
                       <li data-action="click->documentation#clickSidebarMenu">
                         <a href="#download-windows" class="menu-link">
-                          <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                          <div aria-label="status" class="status"></div>
                           Download from the windows store
                         </a>
                       </li>
                       <li data-action="click->documentation#clickSidebarMenu">
                         <a href="#authorize-windows" class="menu-link">
-                          <div aria-label="status" class="status" style="visibility:hidden;"></div>
+                          <div aria-label="status" class="status"></div>
                           Authorize the application
                         </a>
                       </li>
@@ -100,7 +99,7 @@
       </li>
       <li data-action="click->documentation#clickSidebarMenu">
         <a href="#web-application" class="menu-link">
-          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]" style="visibility:hidden;">
+          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
             <div class="status status-primary animate-ping"></div>
             <div class="status status-primary"></div>
           </div>
@@ -112,7 +111,15 @@
 </div>
 
 <style type="text/css">
-  .status {
+  div.drawer {
+    margin: 10px auto;
+  }
+  div.drawer-side {
+    overflow: hidden;
+  }
+  [aria-label="status"],
+  [aria-label="status-animated"] {
+    visibility: hidden;
     margin: 10px 5px;
   }
 </style>
