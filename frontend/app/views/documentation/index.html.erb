@@ -33,10 +33,13 @@
         </a>
       </li>
       <li>
-        <ul class="p-2">
+        <ul>
           <li data-action="click->documentation#clickSidebarMenu">
             <a href="#quick-start" class="menu-link">
-              <div aria-label="status" class="status"></div>
+              <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                <div class="status status-primary animate-ping"></div>
+                <div class="status status-primary"></div>
+              </div>
               Quick start
             </a>
           </li>
@@ -46,7 +49,10 @@
               <ul>
                 <li data-action="click->documentation#clickSidebarMenu">
                   <a href="#install-macos" class="menu-link">
-                    <div aria-label="status" class="status"></div>
+                    <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                      <div class="status status-primary animate-ping"></div>
+                      <div class="status status-primary"></div>
+                    </div>
                     Install
                   </a>
                 </li>
@@ -56,13 +62,19 @@
                     <ul>
                       <li data-action="click->documentation#clickSidebarMenu">
                         <a href="#download-macos" class="menu-link">
-                          <div aria-label="status" class="status"></div>
+                          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                            <div class="status status-primary animate-ping"></div>
+                            <div class="status status-primary"></div>
+                          </div>
                           Download from the app store
                         </a>
                       </li>
                       <li data-action="click->documentation#clickSidebarMenu">
                         <a href="#authorize-macos" class="menu-link">
-                          <div aria-label="status" class="status"></div>
+                          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                            <div class="status status-primary animate-ping"></div>
+                            <div class="status status-primary"></div>
+                          </div>
                           Authorize the application
                         </a>
                       </li>
@@ -78,7 +90,10 @@
               <ul>
                 <li data-action="click->documentation#clickSidebarMenu">
                   <a href="#install-windows" class="menu-link">
-                    <div aria-label="status" class="status"></div>
+                    <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                      <div class="status status-primary animate-ping"></div>
+                      <div class="status status-primary"></div>
+                    </div>
                     Install
                   </a>
                 </li>
@@ -88,13 +103,19 @@
                     <ul>
                       <li data-action="click->documentation#clickSidebarMenu">
                         <a href="#download-windows" class="menu-link">
-                          <div aria-label="status" class="status"></div>
+                          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                            <div class="status status-primary animate-ping"></div>
+                            <div class="status status-primary"></div>
+                          </div>
                           Download from the windows store
                         </a>
                       </li>
                       <li data-action="click->documentation#clickSidebarMenu">
                         <a href="#authorize-windows" class="menu-link">
-                          <div aria-label="status" class="status"></div>
+                          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                            <div class="status status-primary animate-ping"></div>
+                            <div class="status status-primary"></div>
+                          </div>
                           Authorize the application
                         </a>
                       </li>
@@ -121,8 +142,7 @@
 
 <style type="text/css">
   #documentationMenu {
-    background-color: rgba(237, 237, 237, 0.341);
-    border: 1px solid #EEEEEE;
+    border: 3px solid #EEEEEE;
   }
   div.drawer {
     margin: 10px auto;
@@ -136,6 +156,6 @@
   [aria-label="status"],
   [aria-label="status-animated"] {
     visibility: hidden;
-    margin: 10px 5px;
+    margin: 0 5px;
   }
 </style>
