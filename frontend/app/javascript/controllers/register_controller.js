@@ -17,7 +17,6 @@ export default class extends Controller {
       }
     })
 
-
     _.each(['plan'], (attribute, index) => {
       if (this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]').length > 0) {
         this.user[attribute] = this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]')[0].value
@@ -26,9 +25,21 @@ export default class extends Controller {
   }
 
   input(event) {
-    _.each(['firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
-      if (event.target.name == "user[" + attribute + "]") {
-        this.user[attribute] = event.target.value
+    _.each(this.registerFormTarget.querySelectorAll('[name="user[companyName]"]'), (element, index) => {
+      if (this.selectedForm == 'company') {
+        console.debug('company', this.user)
+        _.each(['companyName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
+          if (event.target.name == "user[" + attribute + "]") {
+            this.user[attribute] = event.target.value
+          }
+        })
+      } else {
+        console.debug('person', this.user)
+        _.each(['firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
+          if (event.target.name == "user[" + attribute + "]") {
+            this.user[attribute] = event.target.value
+          }
+        })
       }
     })
     this.validateForm()
@@ -46,11 +57,13 @@ export default class extends Controller {
   radioSelect(event) {
     this.selectRadioEvent(event)
     this.toggleCompanyForm()
+    this.validateForm()
   }
 
   labelClicked(event) {
     this.selectRadioEvent(event)
     this.toggleCompanyForm()
+    this.validateForm()
   }
 
   selectRadioEvent(event) {
@@ -69,7 +82,7 @@ export default class extends Controller {
       })
     })
   }
-  
+
   toggleCompanyForm() {
     _.each(this.registerFormTarget.querySelectorAll('[name="user[companyName]"]'), (element, index) => {
       if (this.selectedForm == 'company') {
@@ -96,11 +109,22 @@ export default class extends Controller {
 
   validateForm() {
     this.valid = true
-    _.each(['firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation', 'agreeToTermsAndConditions'], (attribute, index) => {
-      if (typeof this.user[attribute] == "undefined" || this.user[attribute] == false) {
-        this.valid = false
+    _.each(this.registerFormTarget.querySelectorAll('[name="user[companyName]"]'), (element, index) => {
+      if (this.selectedForm == 'company') {
+        _.each(['companyName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation', 'agreeToTermsAndConditions'], (attribute, index) => {
+          if (typeof this.user[attribute] == "undefined" || this.user[attribute] == false) {
+            this.valid = false
+          }
+        })
+      } else {
+        _.each(['firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation', 'agreeToTermsAndConditions'], (attribute, index) => {
+          if (typeof this.user[attribute] == "undefined" || this.user[attribute] == false) {
+            this.valid = false
+          }
+        })
       }
     })
+
     const submitBtn = this.registerFormTarget.querySelectorAll('[name="submitButton"]')[0]
     this.valid ? submitBtn.classList.add('btn-neutral') : submitBtn.classList.remove('btn-neutral')
   }
