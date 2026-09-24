@@ -27,14 +27,12 @@ export default class extends Controller {
   input(event) {
     _.each(this.registerFormTarget.querySelectorAll('[name="user[companyName]"]'), (element, index) => {
       if (this.selectedForm == 'company') {
-        console.debug('company', this.user)
         _.each(['companyName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
           if (event.target.name == "user[" + attribute + "]") {
             this.user[attribute] = event.target.value
           }
         })
       } else {
-        console.debug('person', this.user)
         _.each(['firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
           if (event.target.name == "user[" + attribute + "]") {
             this.user[attribute] = event.target.value
