@@ -28,4 +28,38 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  steps:
+    choose_plan: "Choose Plan"
+    register: "Register"
+    validate: "Validate"
+    complete: "Complete"
+  form:
+    register:
+      person: "Person"
+      company: "Company"
+      company_name: "Company name"
+      first_name: "First name"
+      last_name: "Last name"
+      email_address: "Email address"
+      email_address_placeholder: "mail@site.com"
+      address_placeholder: "Address: 123 Jane Doe st."
+      postal_code: "Postal code"
+      city: "City"
+      country: "Country"
+      plan: "Plan"
+      password: "Password"
+      password_confirmation: "Password confirmation"
+      terms_and_conditions: "I have read and accept the terms and conditions"
+  validation:
+    allowed_values_message: "Only letters, numbers or dash"
+    allowed_values_password: "Must be more than 8 characters, including number, lowercase letter, uppercase letter"
+    allowed_values_password_long: "Must be more than 8 characters, including <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter"
+    register:
+      first_name: "Enter a valid first name"
+      last_name: "Enter a valid last name"
+      company_name: "Enter a valid company name"
+      email_address: "Enter a valid email address"
+      postal_code: "Enter a valid postal code"
+      city: "Enter a valid city"
+      country: "Select a valid country"
+      plan: "Select a valid plan"

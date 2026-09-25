@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "home" => "pages#home", as: "home"
   get "register" => "pages#register", as: "register"
   get "plans" => "pages#plans", as: "plans"
+  get "validate" => "pages#validate", as: "validate"
 
   # Documentation
   get "documentation" => "documentation#index", as: "documentation"

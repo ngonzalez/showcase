@@ -24,5 +24,8 @@ module Frontend
     config.time_zone = "Europe/Paris"
 
     config.hosts << "#{APP_HOSTNAME}:#{APP_PORT}"
+
+    config.i18n.available_locales = [:en]
+    config.i18n.default_locale = :en
   end
 end

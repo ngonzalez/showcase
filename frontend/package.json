@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "description": "Appshare Showcase Web Site. Copyright 2026 Nicolas GONZALEZ",
+  "description": "Appshare showcase web site. Copyright 2026 Nicolas GONZALEZ",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ngonzalez/showcase.git"
@@ -11,8 +11,12 @@
     "lib": "lib",
     "test": "test"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "appshare",
+    "publishing",
+    "showcase"
+  ],
+  "author": "Nicolas GONZALEZ <nicolasgonzalez180@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "daisyui": "^5.7.37"

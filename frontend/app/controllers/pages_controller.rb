@@ -10,6 +10,9 @@ class PagesController < ApplicationController
   def register
   end
 
+  def validate
+  end
+
   private
 
   def set_plan
