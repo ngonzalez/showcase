@@ -1,6 +1,6 @@
 class RegistrationController < ApplicationController
   before_action :set_permitted_params, only: %i[index create]
-  before_action :encode_user_payload, only: %i[create]
+  before_action :encode_user_payload, only: %i[index create]
 
   attr_accessor :permitted_params
   attr_accessor :user_payload

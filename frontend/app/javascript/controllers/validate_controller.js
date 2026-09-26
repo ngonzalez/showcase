@@ -11,5 +11,6 @@ export default class ValidateFormController extends Controller {
     event.preventDefault()
     event.target.classList.add('disabled')
     event.target.setAttribute('disabled', 'disabled')
+    this.validateFormTarget.requestSubmit()
   }
 }
