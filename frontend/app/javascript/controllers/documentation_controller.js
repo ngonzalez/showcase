@@ -37,7 +37,7 @@ export default class extends Controller {
             })
             .then((response) => {
               container.innerHTML = marked.parse(response.data)
-              _.each(document.getElementsByTagName('pre'), (item, i) => {
+              _.each(container.getElementsByTagName('pre'), (item, i) => {
                 let div = document.createElement('div')
                 div.classList.add('mockup-code')
                 div.classList.add('w-full')
@@ -48,7 +48,7 @@ export default class extends Controller {
                 item.parentNode.insertBefore(div, item.nextSibling)
                 item.style.display = 'none'
               })
-              _.each(document.getElementsByTagName('h4'), (item, i) => {
+              _.each(container.getElementsByTagName('h4'), (item, i) => {
                 item.classList.add('font-title')
                 item.classList.add('text-1xl')
                 item.classList.add('md:text-1xl')
@@ -57,7 +57,7 @@ export default class extends Controller {
                 item.classList.add('mb-2')
                 item.classList.add('pt-2')
               })
-              _.each(document.getElementsByTagName('h3'), (item, i) => {
+              _.each(container.getElementsByTagName('h3'), (item, i) => {
                 item.classList.add('font-title')
                 item.classList.add('text-1xl')
                 item.classList.add('md:text-1xl')
@@ -66,7 +66,7 @@ export default class extends Controller {
                 item.classList.add('mb-2')
                 item.classList.add('pt-2')
               })
-              _.each(document.getElementsByTagName('h2'), (item, i) => {
+              _.each(container.getElementsByTagName('h2'), (item, i) => {
                 item.classList.add('font-title')
                 item.classList.add('text-1xl')
                 item.classList.add('md:text-2xl')
@@ -75,7 +75,7 @@ export default class extends Controller {
                 item.classList.add('mb-2')
                 item.classList.add('pt-2')
               })
-              _.each(document.getElementsByTagName('h1'), (item, i) => {
+              _.each(container.getElementsByTagName('h1'), (item, i) => {
                 item.classList.add('font-title')
                 item.classList.add('text-2xl')
                 item.classList.add('md:text-3xl')
