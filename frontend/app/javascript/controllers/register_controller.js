@@ -99,7 +99,7 @@ export default class RegisterFormController extends Controller {
   }
 
   toggleSubmitButton() {
-    const element = this.registerFormTarget.querySelectorAll('[name="submitButton"]')[0]
+    const element = this.registerFormTarget.querySelectorAll('[type="submit"]')[0]
     if (this.valid) {
       element.classList.add('btn-neutral')
       element.classList.remove('disabled')

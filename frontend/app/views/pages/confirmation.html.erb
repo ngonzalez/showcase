@@ -1,0 +1,20 @@
+<div style="margin: auto;" class="overflow-x-auto">
+  <div align="center" class="mt-8 pt-4">
+    <ul class="steps">
+      <li class="step step-neutral"><%= I18n.t('steps.choose_plan') %></li>
+      <li class="step step-neutral"><%= I18n.t('steps.register') %></li>
+      <li class="step step-neutral"><%= I18n.t('steps.validate') %></li>
+      <li class="step step-neutral"><%= I18n.t('steps.complete') %></li>
+    </ul>
+    <div class="m-10">
+      <div role="alert" class="alert card bg-base-100 shadow-sm">
+        <%= render(partial: "icons/info") %>
+        <div class="m-2">
+          <p>The request to create your account was sent.</p>
+          <p>Please check your Email for a message from us.</p>
+          <p>Thanks for choosing our services.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

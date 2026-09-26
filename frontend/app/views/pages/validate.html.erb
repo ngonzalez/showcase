@@ -78,7 +78,7 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :address) %>
-                <%= hidden_field_tag("user[address]", local_assigns[:user][:address].try(:[], :emailAddress)) %>
+                <%= hidden_field_tag("user[address]", local_assigns[:user][:payload].try(:[], :address)) %>
               </td>
             </tr>
             <tr>
@@ -87,7 +87,7 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :postalCode) %>
-                <%= hidden_field_tag("user[postalCode]", local_assigns[:user][:postalCode].try(:[], :emailAddress)) %>
+                <%= hidden_field_tag("user[postalCode]", local_assigns[:user][:payload].try(:[], :postalCode)) %>
               </td>
             </tr>
             <tr>
@@ -96,7 +96,7 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :city) %>
-                <%= hidden_field_tag("user[city]", local_assigns[:user][:city].try(:[], :emailAddress)) %>
+                <%= hidden_field_tag("user[city]", local_assigns[:user][:payload].try(:[], :city)) %>
               </td>
             </tr>
             <tr>
@@ -105,7 +105,7 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :country) %>
-                <%= hidden_field_tag("user[country]", local_assigns[:user][:country].try(:[], :emailAddress)) %>
+                <%= hidden_field_tag("user[country]", local_assigns[:user][:payload].try(:[], :country)) %>
               </td>
             </tr>
             <tr>
@@ -114,13 +114,12 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :plan) %>
-                <%= hidden_field_tag("user[plan]", local_assigns[:user][:country].try(:[], :emailAddress)) %>
+                <%= hidden_field_tag("user[plan]", local_assigns[:user][:payload].try(:[], :plan)) %>
               </td>
             </tr>
           <tr>
             <td colspan="2" align="center">
-              <input data-action="click->register#submit"
-                     name="submitButton"
+              <input data-action="click->validate#submit"
                      type="submit"
                      class="btn btn-neutral m-10" />
             </td>

@@ -41,6 +41,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def confirmation
+    render("pages/confirmation")
+  end
+
   private
 
   def set_permitted_params

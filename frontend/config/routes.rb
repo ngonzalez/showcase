@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   get "register" => "pages#register", as: "register"
   get "plans" => "pages#plans", as: "plans"
   get "validate" => "pages#validate", as: "validate"
+  get "confirmation" => "pages#confirmation", as: "confirmation"
 
   # Registration
   get "registration" => "registration#index", as: "registration_redirect"
   post "registration" => "registration#create", as: "registration"
-  post "confirmation" => "confirmation#create", as: "confirmation"
 
   # Documentation
   get "documentation" => "documentation#index", as: "documentation"
