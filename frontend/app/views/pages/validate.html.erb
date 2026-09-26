@@ -49,26 +49,25 @@
                   <%= hidden_field_tag("companyName", local_assigns[:user][:payload].try(:[], :companyName)) %>
                 </td>
               </tr>
-            <% elsif local_assigns[:user][:payload].try(:[], :accountType) == "person" %>
-              <tr>
-                <td>
-                  <label class="label"><%= I18n.t('form.register.first_name') %></label>
-                </td>
-                <td>
-                  <%= local_assigns[:user][:payload].try(:[], :firstName) %>
-                  <%= hidden_field_tag("firstName", local_assigns[:user][:payload].try(:[], :firstName)) %>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label class="label"><%= I18n.t('form.register.last_name') %></label>
-                </td>
-                <td>
-                  <%= local_assigns[:user][:payload].try(:[], :lastName) %>
-                  <%= hidden_field_tag("lastName", local_assigns[:user][:payload].try(:[], :lastName)) %>
-                </td>
-              </tr>
             <% end %>
+            <tr>
+              <td>
+                <label class="label"><%= I18n.t('form.register.first_name') %></label>
+              </td>
+              <td>
+                <%= local_assigns[:user][:payload].try(:[], :firstName) %>
+                <%= hidden_field_tag("firstName", local_assigns[:user][:payload].try(:[], :firstName)) %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="label"><%= I18n.t('form.register.last_name') %></label>
+              </td>
+              <td>
+                <%= local_assigns[:user][:payload].try(:[], :lastName) %>
+                <%= hidden_field_tag("lastName", local_assigns[:user][:payload].try(:[], :lastName)) %>
+              </td>
+            </tr>
             <tr>
               <td>
                 <label class="label"><%= I18n.t('form.register.email_address') %></label>

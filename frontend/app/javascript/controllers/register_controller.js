@@ -82,20 +82,6 @@ export default class RegisterFormController extends Controller {
         element.parentNode.parentNode.style.display = 'none'
       }
     })
-    _.each(this.registerFormTarget.querySelectorAll('[name="user[firstName]"]'), (element, index) => {
-      if (this.selectedForm == 'person') {
-        element.parentNode.parentNode.style.display = 'block'
-      } else {
-        element.parentNode.parentNode.style.display = 'none'
-      }
-    })
-    _.each(this.registerFormTarget.querySelectorAll('[name="user[lastName]"]'), (element, index) => {
-      if (this.selectedForm == 'person') {
-        element.parentNode.parentNode.style.display = 'block'
-      } else {
-        element.parentNode.parentNode.style.display = 'none'
-      }
-    })
   }
 
   toggleSubmitButton() {
@@ -113,7 +99,7 @@ export default class RegisterFormController extends Controller {
 
   setUserValues(event) {
     if (this.selectedForm == 'company') {
-      _.each(['companyName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
+      _.each(['companyName', 'firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
         if (event.target.name == "user[" + attribute + "]") {
           this.user[attribute] = event.target.value
         }
@@ -137,7 +123,7 @@ export default class RegisterFormController extends Controller {
 
   validateFieldsInForm() {
     if (this.selectedForm == 'company') {
-      _.each(['companyName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation', 'agreeToTermsAndConditions'], (attribute, index) => {
+      _.each(['companyName', 'firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation', 'agreeToTermsAndConditions'], (attribute, index) => {
         if (typeof this.user[attribute] == "undefined" || this.user[attribute] == false) {
           this.valid = false
         }
@@ -160,13 +146,7 @@ export default class RegisterFormController extends Controller {
   }
 
   removeUnusedFieldsInForm() {
-    if (this.selectedForm == 'company') {
-      _.each(['firstName', 'lastName'], (attribute, index) => {
-        _.each(this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]'), (element, i) => {
-          element.parentNode.remove()
-        })
-      })
-    } else {
+    if (this.selectedForm == 'person') {
       _.each(['companyName'], (attribute, index) => {
         _.each(this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]'), (element, i) => {
           element.parentNode.remove()
