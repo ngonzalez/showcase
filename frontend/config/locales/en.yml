@@ -42,6 +42,7 @@ en:
       last_name: "Last name"
       email_address: "Email address"
       email_address_placeholder: "mail@site.com"
+      address: "Address"
       address_placeholder: "Address: 123 Jane Doe st."
       postal_code: "Postal code"
       city: "City"
