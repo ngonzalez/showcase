@@ -20,7 +20,7 @@ export default class ValidateFormController extends Controller {
     //   .catch((error) => {
     //     console.error(error)  }
     //   .finally(() => {
-    //     location.href = "/complete"
+    //     location.href = "/confirmation"
     //   });
   }
 }

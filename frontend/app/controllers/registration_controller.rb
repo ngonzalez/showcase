@@ -1,44 +1,43 @@
 class RegistrationController < ApplicationController
-  before_action :permit_params, only: %i[create]
-  before_action :set_session_user_payload, only: %i[create]
+  before_action :set_permitted_params, only: %i[create]
+  before_action :encode_user_payload, only: %i[create]
+
+  attr_accessor :permitted_params
+  attr_accessor :user_payload
 
   def index
     redirect_to(register_path)
   end
 
   def create
-    redirect_to(validate_path)
+    redirect_to(validate_path(user: { payload: user_payload } ))
   end
 
   private
 
-  def permit_params
-    params[:user].permit!
+  def set_permitted_params
+    @permitted_params = params[:user].permit!
   end
 
-  def set_session_user_payload
-    session[:userPayload] = user_payload
-  end
-
-  def user_payload
-    Base64.encode64(params[:user].to_json) rescue {}
+  def encode_user_payload
+    @user_payload = Base64.encode64(params[:user].to_json) rescue {}
   end
 
   def company?
-    params[:user].try(:accountType) == "company"
+    permitted_params[:user].try(:accountType) == "company"
   end
 
   def person?
-    params[:user].try(:accountType) == "person"
+    permitted_params[:user].try(:accountType) == "person"
   end
 
   def user_account_type_params
-    params[:user].slice([:accountType])
+    permitted_params[:user].slice([:accountType])
   end
 
   def user_params
     if person?
-      params[:user].slice([
+      permitted_params[:user].slice([
         :firstName,
         :lastName,
         :emailAddress,
@@ -51,7 +50,7 @@ class RegistrationController < ApplicationController
         :passwordConfirmation
       ])
     elsif company?
-      params[:user].slice([
+      permitted_params[:user].slice([
         :companyName,
         :emailAddress,
         :address,
