@@ -8,12 +8,18 @@
       </li>
       <li class="step step-neutral">
         <%= link_to I18n.t('steps.register'),
-              register_path(plan: (local_assigns[:user][:payload].try(:[], :plan) rescue nil)),
+              register_path(user: { payload: Base64.encode64(local_assigns[:user][:payload].to_json) }),
               style: "text-decoration: underline;" %>
       </li>
       <li class="step step-neutral"><%= I18n.t('steps.validate') %></li>
       <li class="step"><%= I18n.t('steps.complete') %></li>
     </ul>
+    <div class="m-10">
+      <div role="alert" class="m-2 alert">
+        <%= render(partial: "icons/info") %>
+        <p>Please verify all the fields, to validate your account.</p>
+      </div>
+    </div>
     <%= form_with(method: :post,
                   url: confirmation_path,
                   id: "validateForm",
@@ -24,45 +30,51 @@
                       "validate-target": "validateForm"
                     }
                   }) do |_form| %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>
-            </th>
-            <th>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <label class="label"><%= I18n.t('form.register.first_name') %></label>
-            </td>
-            <td>
-              <%= local_assigns[:user][:payload].try(:[], :firstName) rescue nil %>
-            </td>
-            <td>
-          </tr>
-          <tr>
-            <td>
-              <label class="label"><%= I18n.t('form.register.last_name') %></label>
-            </td>
-            <td>
-              <%= local_assigns[:user][:payload].try(:[], :lastName) rescue nil %>
-            </td>
-            <td>
-          </tr>
-          <tr>
-            <td>
-              <label class="label"><%= I18n.t('form.register.email_address') %></label>
-            </td>
-            <td>
-              <%= local_assigns[:user][:payload].try(:[], :emailAddress) rescue nil %>
-            </td>
-            <td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="mt-8 pt-4">
+        <table class="table">
+          <tbody>
+            <% if local_assigns[:user][:payload].try(:[], :accountType) == "company" %>
+              <tr>
+                <td>
+                  <label class="label"><%= I18n.t('form.register.company_name') %></label>
+                </td>
+                <td>
+                  <%= local_assigns[:user][:payload].try(:[], :companyName) %>
+                </td>
+                <td>
+              </tr>
+            <% elsif local_assigns[:user][:payload].try(:[], :accountType) == "person" %>
+              <tr>
+                <td>
+                  <label class="label"><%= I18n.t('form.register.first_name') %></label>
+                </td>
+                <td>
+                  <%= local_assigns[:user][:payload].try(:[], :firstName) %>
+                </td>
+                <td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="label"><%= I18n.t('form.register.last_name') %></label>
+                </td>
+                <td>
+                  <%= local_assigns[:user][:payload].try(:[], :lastName) %>
+                </td>
+                <td>
+              </tr>
+            <% end %>
+            <tr>
+              <td>
+                <label class="label"><%= I18n.t('form.register.email_address') %></label>
+              </td>
+              <td>
+                <%= local_assigns[:user][:payload].try(:[], :emailAddress) %>
+              </td>
+              <td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     <% end %>
   </div>
 </div>
