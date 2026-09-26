@@ -55,7 +55,7 @@ export default class extends Controller {
                 item.classList.add('lg:text-3xl')
                 item.classList.add('mt-2')
                 item.classList.add('mb-2')
-                item.classList.add('p-4')
+                item.classList.add('pt-2')
               })
               _.each(document.getElementsByTagName('h1'), (item, i) => {
                 item.classList.add('font-title')
