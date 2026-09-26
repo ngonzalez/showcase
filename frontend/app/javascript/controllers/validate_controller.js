@@ -21,6 +21,7 @@ export default class ValidateFormController extends Controller {
       .then((response) => {
         if (response.data['verify_account'] || response.data['verify_user']) {
           var container = document.getElementById('errorMessages')
+          container.innerHTML = ''
           var element = document.createElement('ul')
           container.parentNode.parentNode.style.display = 'block'
           container.append(element)
