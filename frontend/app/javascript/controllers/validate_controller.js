@@ -8,19 +8,18 @@ export default class ValidateFormController extends Controller {
     console.debug('validate', 'connect')
   }
 
-  submit(event) {
-    event.preventDefault()
-    event.target.classList.add('disabled')
-    event.target.setAttribute('disabled', 'disabled')
-
+  getFormValues() {
     const formData = {}
     new FormData(this.validateFormTarget).forEach((value, key) => {
       formData[key] = value
     })
+    return formData
+  }
 
+  submitForm(values) {
     axios
       .post(window.BACKEND_URL, {
-        parameters: btoa(JSON.stringify(formData)),
+        parameters: btoa(JSON.stringify(values)),
         headers: {
           "Content-Type": "application/json"
         },
@@ -34,5 +33,14 @@ export default class ValidateFormController extends Controller {
       .finally(() => {
         document.location.href = "/confirmation"
       })
+  }
+
+  submit(event) {
+    event.preventDefault()
+    event.target.classList.add('disabled')
+    event.target.setAttribute('disabled', 'disabled')
+
+    const formValues = this.getFormValues()
+    this.submitForm(formValues)
   }
 }

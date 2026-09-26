@@ -40,7 +40,7 @@
                 </td>
                 <td>
                   <%= local_assigns[:user][:payload].try(:[], :companyName) %>
-                  <%= hidden_field_tag("user[companyName]", local_assigns[:user][:payload].try(:[], :companyName)) %>
+                  <%= hidden_field_tag("companyName", local_assigns[:user][:payload].try(:[], :companyName)) %>
                 </td>
               </tr>
             <% elsif local_assigns[:user][:payload].try(:[], :accountType) == "person" %>
@@ -50,7 +50,7 @@
                 </td>
                 <td>
                   <%= local_assigns[:user][:payload].try(:[], :firstName) %>
-                  <%= hidden_field_tag("user[firstName]", local_assigns[:user][:payload].try(:[], :firstName)) %>
+                  <%= hidden_field_tag("firstName", local_assigns[:user][:payload].try(:[], :firstName)) %>
                 </td>
               </tr>
               <tr>
@@ -59,7 +59,7 @@
                 </td>
                 <td>
                   <%= local_assigns[:user][:payload].try(:[], :lastName) %>
-                  <%= hidden_field_tag("user[lastName]", local_assigns[:user][:payload].try(:[], :lastName)) %>
+                  <%= hidden_field_tag("lastName", local_assigns[:user][:payload].try(:[], :lastName)) %>
                 </td>
               </tr>
             <% end %>
@@ -69,7 +69,7 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :emailAddress) %>
-                <%= hidden_field_tag("user[emailAddress]", local_assigns[:user][:payload].try(:[], :emailAddress)) %>
+                <%= hidden_field_tag("emailAddress", local_assigns[:user][:payload].try(:[], :emailAddress)) %>
               </td>
             </tr>
             <tr>
@@ -78,7 +78,7 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :address) %>
-                <%= hidden_field_tag("user[address]", local_assigns[:user][:payload].try(:[], :address)) %>
+                <%= hidden_field_tag("address", local_assigns[:user][:payload].try(:[], :address)) %>
               </td>
             </tr>
             <tr>
@@ -87,7 +87,7 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :postalCode) %>
-                <%= hidden_field_tag("user[postalCode]", local_assigns[:user][:payload].try(:[], :postalCode)) %>
+                <%= hidden_field_tag("postalCode", local_assigns[:user][:payload].try(:[], :postalCode)) %>
               </td>
             </tr>
             <tr>
@@ -96,7 +96,7 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :city) %>
-                <%= hidden_field_tag("user[city]", local_assigns[:user][:payload].try(:[], :city)) %>
+                <%= hidden_field_tag("city", local_assigns[:user][:payload].try(:[], :city)) %>
               </td>
             </tr>
             <tr>
@@ -105,7 +105,7 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :country) %>
-                <%= hidden_field_tag("user[country]", local_assigns[:user][:payload].try(:[], :country)) %>
+                <%= hidden_field_tag("country", local_assigns[:user][:payload].try(:[], :country)) %>
               </td>
             </tr>
             <tr>
@@ -114,7 +114,7 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :plan) %>
-                <%= hidden_field_tag("user[plan]", local_assigns[:user][:payload].try(:[], :plan)) %>
+                <%= hidden_field_tag("plan", local_assigns[:user][:payload].try(:[], :plan)) %>
               </td>
             </tr>
           <tr>
