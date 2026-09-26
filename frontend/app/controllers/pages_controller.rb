@@ -28,7 +28,7 @@ class PagesController < ApplicationController
   end
 
   def validate
-    if permitted_params[:payload].nil?
+    if permitted_params.try(:[], :payload).nil?
       redirect_to(register_path)
     else
       render("pages/validate",
@@ -52,7 +52,7 @@ class PagesController < ApplicationController
   end
 
   def set_user_payload_encoded
-    @user_payload_encoded = permitted_params[:payload]
+    @user_payload_encoded = permitted_params[:payload] rescue nil
   end
 
   def set_plan
