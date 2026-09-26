@@ -27,10 +27,7 @@ export default class extends Controller {
       if ((document.location.hash != '') && (element.getAttribute('href') == document.location.hash)) {
         element.classList.add('active')
         let container = this.documentationPageTarget.querySelectorAll('[name="container"]')[0]
-        let section = this.documentationPageTarget.querySelectorAll('[name="section"]')[0]
         let anchor = element.getAttribute('href')
-        let str = "***" + anchor + "***"
-        section.innerHTML = marked.parse(str)
         if (documentation[anchor]) {
           axios
             .get(documentation[anchor], {
@@ -45,6 +42,7 @@ export default class extends Controller {
                 div.classList.add('mockup-code')
                 div.classList.add('w-full')
                 div.classList.add('mt-4')
+                div.classList.add('mb-4')
                 div.classList.add('p-4')
                 div.innerHTML = item.innerHTML
                 item.parentNode.insertBefore(div, item.nextSibling)
@@ -56,7 +54,8 @@ export default class extends Controller {
                 item.classList.add('md:text-2xl')
                 item.classList.add('lg:text-3xl')
                 item.classList.add('mt-2')
-                item.classList.add('pt-2')
+                item.classList.add('mb-2')
+                item.classList.add('p-4')
               })
               _.each(document.getElementsByTagName('h1'), (item, i) => {
                 item.classList.add('font-title')
@@ -64,6 +63,7 @@ export default class extends Controller {
                 item.classList.add('md:text-3xl')
                 item.classList.add('lg:text-4xl')
                 item.classList.add('mt-2')
+                item.classList.add('mb-2')
                 item.classList.add('pt-2')
               })
             })
@@ -84,7 +84,6 @@ export default class extends Controller {
 
   clickSidebarMenu(event) {
     const anchor = event.target.getAttribute('href')
-    console.log(anchor)
     if (anchor) {
       _.each(document.getElementById('documentationMenu').querySelectorAll('a.menu-link'), (element, index) => {
         element.classList.remove('active')
@@ -99,10 +98,8 @@ export default class extends Controller {
           statusAnimatedElement.style.visibility = 'hidden'
         }
       })
-      event.target.classList.add('active')
-      let sectionElement = this.documentationPageTarget.querySelectorAll('[name="section"]')[0]
-      sectionElement.innerHTML = event.target.getAttribute('href')
 
+      event.target.classList.add('active')
       let statusElement = event.target.querySelectorAll('[aria-label="status"]')[0]
       if (typeof statusElement != 'undefined') {
         statusElement.style.visibility = 'visible'
