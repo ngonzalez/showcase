@@ -10,48 +10,17 @@ export default class RegisterFormController extends Controller {
     this.selectedForm = 'person'
     this.toggleCompanyForm()
     this.validateForm()
-
-    _.each(this.registerFormTarget.querySelectorAll('[name="user[accountType]"]'), (element, index) => {
-      if (element.value == this.selectedForm) {
-        element.checked = true
-        _.each(element.parentNode.querySelectorAll('label'), (item, i) => {
-          item.style = "text-decoration:underline;"
-        })
-      }
-    })
-
-    _.each(['plan'], (attribute, index) => {
-      if (this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]').length > 0) {
-        this.user[attribute] = this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]')[0].value
-      }
-    })
+    this.setAccountType()
+    this.setUserPlan()
   }
 
   input(event) {
-    _.each(this.registerFormTarget.querySelectorAll('[name="user[companyName]"]'), (element, index) => {
-      if (this.selectedForm == 'company') {
-        _.each(['companyName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
-          if (event.target.name == "user[" + attribute + "]") {
-            this.user[attribute] = event.target.value
-          }
-        })
-      } else {
-        _.each(['firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
-          if (event.target.name == "user[" + attribute + "]") {
-            this.user[attribute] = event.target.value
-          }
-        })
-      }
-    })
+    this.setUserValues(event)
     this.validateForm()
   }
 
   inputChanged(event) {
-    _.each(['agreeToTermsAndConditions'], (attribute, index) => {
-      if (event.target.name == "user[" + attribute + "]") {
-        this.user[attribute] = event.target.checked
-      }
-    })
+    this.validateCheckBoxes(event)
     this.validateForm()
   }
 
@@ -69,6 +38,27 @@ export default class RegisterFormController extends Controller {
 
   selectRadioEvent(event) {
     event.preventDefault()
+    this.setSelectedForm(event)
+  }
+
+  validateForm() {
+    this.valid = true
+    this.validateFieldsInForm()
+    this.toggleSubmitButton()
+  }
+
+  setAccountType() {
+    _.each(this.registerFormTarget.querySelectorAll('[name="user[accountType]"]'), (element, index) => {
+      if (element.value == this.selectedForm) {
+        element.checked = true
+        _.each(element.parentNode.querySelectorAll('label'), (item, i) => {
+          item.style = "text-decoration:underline;"
+        })
+      }
+    })
+  }
+
+  setSelectedForm(event) {
     _.each(this.registerFormTarget.querySelectorAll('[name="user[accountType]"]'), (element, index) => {
       element.checked = false
       _.each(element.parentNode.querySelectorAll('label'), (item, i) => {
@@ -108,26 +98,81 @@ export default class RegisterFormController extends Controller {
     })
   }
 
-  validateForm() {
-    this.valid = true
-    _.each(this.registerFormTarget.querySelectorAll('[name="user[companyName]"]'), (element, index) => {
-      if (this.selectedForm == 'company') {
-        _.each(['companyName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation', 'agreeToTermsAndConditions'], (attribute, index) => {
-          if (typeof this.user[attribute] == "undefined" || this.user[attribute] == false) {
-            this.valid = false
-          }
-        })
-      } else {
-        _.each(['firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation', 'agreeToTermsAndConditions'], (attribute, index) => {
-          if (typeof this.user[attribute] == "undefined" || this.user[attribute] == false) {
-            this.valid = false
-          }
-        })
+  toggleSubmitButton() {
+    const element = this.registerFormTarget.querySelectorAll('[name="submitButton"]')[0]
+    if (this.valid) {
+      element.classList.add('btn-neutral')
+      element.classList.remove('disabled')
+      element.removeAttribute('disabled')
+    } else {
+      element.classList.remove('btn-neutral')
+      element.classList.add('disabled')
+      element.setAttribute('disabled', 'disabled')
+    }
+  }
+
+  setUserValues(event) {
+    if (this.selectedForm == 'company') {
+      _.each(['companyName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
+        if (event.target.name == "user[" + attribute + "]") {
+          this.user[attribute] = event.target.value
+        }
+      })
+    } else {
+      _.each(['firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation'], (attribute, index) => {
+        if (event.target.name == "user[" + attribute + "]") {
+          this.user[attribute] = event.target.value
+        }
+      })
+    }
+  }
+
+  setUserPlan() {
+    _.each(['plan'], (attribute, index) => {
+      if (this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]').length > 0) {
+        this.user[attribute] = this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]')[0].value
       }
     })
+  }
 
-    const submitBtn = this.registerFormTarget.querySelectorAll('[name="submitButton"]')[0]
-    this.valid ? submitBtn.classList.add('btn-neutral') : submitBtn.classList.remove('btn-neutral')
+  validateFieldsInForm() {
+    if (this.selectedForm == 'company') {
+      _.each(['companyName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation', 'agreeToTermsAndConditions'], (attribute, index) => {
+        if (typeof this.user[attribute] == "undefined" || this.user[attribute] == false) {
+          this.valid = false
+        }
+      })
+    } else {
+      _.each(['firstName', 'lastName', 'emailAddress', 'address', 'postalCode', 'city', 'country', 'password', 'passwordConfirmation', 'agreeToTermsAndConditions'], (attribute, index) => {
+        if (typeof this.user[attribute] == "undefined" || this.user[attribute] == false) {
+          this.valid = false
+        }
+      })
+    }
+  }
+
+  validateCheckBoxes(event) {
+    _.each(['agreeToTermsAndConditions'], (attribute, index) => {
+      if (event.target.name == "user[" + attribute + "]") {
+        this.user[attribute] = event.target.checked
+      }
+    })
+  }
+
+  removeUnusedFieldsInForm() {
+    if (this.selectedForm == 'company') {
+      _.each(['firstName', 'lastName'], (attribute, index) => {
+        _.each(this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]'), (element, i) => {
+          element.parentNode.remove()
+        })
+      })
+    } else {
+      _.each(['companyName'], (attribute, index) => {
+        _.each(this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]'), (element, i) => {
+          element.parentNode.remove()
+        })
+      })
+    }
   }
 
   submit(event) {
@@ -135,21 +180,9 @@ export default class RegisterFormController extends Controller {
     event.target.classList.add('disabled')
     event.target.setAttribute('disabled', 'disabled')
     if (this.valid) {
-      if (this.selectedForm == 'company') {
-        _.each(['firstName', 'lastName'], (attribute, index) => {
-          _.each(this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]'), (element, i) => {
-            element.parentNode.remove()
-          })
-        })
-      } else {
-        _.each(['companyName'], (attribute, index) => {
-          _.each(this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]'), (element, i) => {
-            element.parentNode.remove()
-          })
-        })
-      }
-      
+      this.removeUnusedFieldsInForm()
       this.registerFormTarget.requestSubmit()
     }
   }
 }
+
