@@ -1,13 +1,16 @@
 import { Controller } from '@hotwired/stimulus'
 import _ from 'lodash'
 
-export default class extends Controller {
+export default class RegisterFormController extends Controller {
   static targets = [ 'registerForm' ]
 
   connect() {
+    console.debug('register', 'connect')
     this.user = {}
     this.selectedForm = 'person'
     this.toggleCompanyForm()
+    this.validateForm()
+
     _.each(this.registerFormTarget.querySelectorAll('[name="user[accountType]"]'), (element, index) => {
       if (element.value == this.selectedForm) {
         element.checked = true

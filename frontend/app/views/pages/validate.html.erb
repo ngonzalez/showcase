@@ -9,6 +9,7 @@
     <%= form_with(method: :post,
                   url: confirmation_path,
                   id: "validateForm",
+                  data: { turbo: true },
                   html: {
                     data: {
                       controller: "validate",
@@ -31,6 +32,15 @@
             </td>
             <td>
               <%= JSON.parse(Base64.decode64(session[:userPayload]))["firstName"] %>
+            </td>
+            <td>
+          </tr>
+          <tr>
+            <td>
+              <%= I18n.t('form.register.last_name') %>
+            </td>
+            <td>
+              <%= JSON.parse(Base64.decode64(session[:userPayload]))["lastName"] %>
             </td>
             <td>
           </tr>

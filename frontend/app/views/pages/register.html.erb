@@ -13,6 +13,7 @@
     <%= form_with(method: :post,
                   url: registration_path,
                   id: "registerForm",
+                  data: { turbo: true },
                   html: {
                     data: {
                       controller: "register",
