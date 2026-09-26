@@ -4,9 +4,7 @@
       <li class="step step-neutral">
         <%= link_to I18n.t('steps.choose_plan'), plans_path, style: "text-decoration: underline;" %>
       </li>
-      <li class="step step-neutral">
-        <%= link_to I18n.t('steps.register'), register_path(plan: @plan), style: "text-decoration: underline;" %>
-      </li>
+      <li class="step step-neutral"><%= I18n.t('steps.register') %></li>
       <li class="step"><%= I18n.t('steps.validate') %></li>
       <li class="step"><%= I18n.t('steps.complete') %></li>
     </ul>
