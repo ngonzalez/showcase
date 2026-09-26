@@ -137,24 +137,48 @@
 </div>
 
 <style type="text/css">
-  details {
-    margin: 0 15px;
-  }
   #documentationMenu {
     border: 3px solid #EEEEEE;
   }
-  div.drawer {
+  #documentationPage details {
+    margin: 0 15px;
+  }
+  #documentationPage div.drawer {
     margin: 10px auto;
   }
-  div.drawer-side {
+  #documentationPage div.drawer-side {
     overflow: hidden;
   }
-  .active {
+  #documentationPage a.active {
     text-decoration: underline;
   }
-  [aria-label="status"],
-  [aria-label="status-animated"] {
+  #documentationPage [aria-label="status"],
+  #documentationPage [aria-label="status-animated"] {
     visibility: hidden;
     margin: 0 5px;
+  }
+  
+  #documentationPage table {
+    margin: 20px 0 !important;
+    border: 1px solid #999999;
+  }
+
+  #documentationPage table th {
+    text-align: left;
+    color: black;
+    background-color: transparent;
+    padding: 20px;
+  }
+
+  #documentationPage table td {
+    cursor:default;
+    text-align: left;
+    color: black;
+    padding: 20px;
+    background-color: transparent;
+  }
+
+  #documentationPage table td:hover {
+    background-color: #EEEEEE;
   }
 </style>
