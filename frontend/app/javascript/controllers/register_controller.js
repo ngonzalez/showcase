@@ -132,22 +132,21 @@ export default class extends Controller {
     event.target.classList.add('disabled')
     event.target.setAttribute('disabled', 'disabled')
     if (this.valid) {
-      axios
-        .post(window.BACKEND_URL, {
-          parameters: btoa(JSON.stringify(this.user)),
-          headers: {
-            "Content-Type": "application/json"
-          },
+      if (this.selectedForm == 'company') {
+        _.each(['firstName', 'lastName'], (attribute, index) => {
+          _.each(this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]'), (element, i) => {
+            element.parentNode.remove()
+          })
         })
-        .then((response) => {
-          console.debug(response)
+      } else {
+        _.each(['companyName'], (attribute, index) => {
+          _.each(this.registerFormTarget.querySelectorAll('[name="user[' + attribute + ']"]'), (element, i) => {
+            element.parentNode.remove()
+          })
         })
-        .catch((error) => {
-          console.error(error)
-        })
-        .finally(() => {
-          location.href = "/validate"
-        });
+      }
+      
+      this.registerFormTarget.requestSubmit()
     }
   }
 }

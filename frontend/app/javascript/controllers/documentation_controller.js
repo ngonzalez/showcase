@@ -22,7 +22,9 @@ export default class extends Controller {
       if ((document.location.hash != '') && (element.getAttribute('href') == document.location.hash)) {
         element.classList.add('active')
         let section = this.documentationPageTarget.querySelectorAll('[name="section"]')[0]
-        section.innerHTML = element.getAttribute('href')
+        let anchor = element.getAttribute('href')
+        console.log(anchor)
+        section.innerHTML = anchor
 
         let statusElement = element.querySelectorAll('[aria-label="status"]')[0]
         if (typeof statusElement != 'undefined') {
@@ -39,6 +41,7 @@ export default class extends Controller {
 
   clickSidebarMenu(event) {
     const anchor = event.target.getAttribute('href')
+    console.log(anchor)
     if (anchor) {
       _.each(document.getElementById('documentationMenu').querySelectorAll('a.menu-link'), (element, index) => {
         element.classList.remove('active')
