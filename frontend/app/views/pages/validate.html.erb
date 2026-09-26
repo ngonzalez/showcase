@@ -1,39 +1,41 @@
 <div style="margin: auto;" class="overflow-x-auto">
-  <div align="center" class="m-8 p-4">
+  <div align="center" class="mt-8 pt-4">
     <ul class="steps">
       <li class="step step-neutral"><%= I18n.t('steps.choose_plan') %></li>
       <li class="step step-neutral"><%= I18n.t('steps.register') %></li>
       <li class="step step-neutral"><%= I18n.t('steps.validate') %></li>
       <li class="step"><%= I18n.t('steps.complete') %></li>
     </ul>
+    <%= form_with(method: :post,
+                  url: confirmation_path,
+                  id: "validateForm",
+                  html: {
+                    data: {
+                      controller: "validate",
+                      "validate-target": "validateForm"
+                    }
+                  }) do |_form| %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+            </th>
+            <th>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= I18n.t('form.register.first_name') %>
+            </td>
+            <td>
+              <%= JSON.parse(Base64.decode64(session[:userPayload]))["firstName"] %>
+            </td>
+            <td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
   </div>
-  <%= form_with(method: :post,
-                url: confirmation_path,
-                id: "validateForm",
-                html: {
-                  data: {
-                    controller: "validate",
-                    "validate-target": "validateForm"
-                  }
-                }) do |_form| %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <%= I18n.t('form.register.first_name') %>
-          </td>
-          <td>
-            <%= JSON.parse(Base64.decode64(session[:userPayload]))["firstName"] %>
-          </td>
-          <td>
-        </tr>
-      </tbody>
-    </table>
-  <% end %>
 </div>
