@@ -19,6 +19,9 @@ gem "jbuilder"
 # [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
+# The speed of a single-page web application without having to write any JavaScript.
+gem "turbo-rails"
+
 # Integrate Tailwind CSS with the asset pipeline in Rails.
 gem "tailwindcss-rails"
 
@@ -43,9 +46,6 @@ gem "bootsnap", require: false
 
 # Autoload dotenv in Rails.
 gem "dotenv-rails"
-
-# The speed of a single-page web application without having to write any JavaScript.
-gem "turbo-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
