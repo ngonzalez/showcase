@@ -37,6 +37,13 @@ export default class extends Controller {
             })
             .then((response) => {
               container.innerHTML = marked.parse(response.data)
+              _.each(container.getElementsByTagName('pre'), (item, i) => {
+                item.classList.add('shadow-sm')
+                item.classList.add('w-full')
+              })
+              _.each(container.getElementsByTagName('table'), (item, i) => {
+                item.classList.add('shadow-sm')
+              })
               _.each(container.getElementsByTagName('h4'), (item, i) => {
                 item.classList.add('font-title')
                 item.classList.add('text-1xl')
@@ -61,7 +68,6 @@ export default class extends Controller {
                 item.classList.add('md:text-2xl')
                 item.classList.add('lg:text-3xl')
                 item.classList.add('mt-4')
-                item.classList.add('mb-2')
                 item.classList.add('pt-2')
               })
               _.each(container.getElementsByTagName('h1'), (item, i) => {
@@ -70,7 +76,6 @@ export default class extends Controller {
                 item.classList.add('md:text-3xl')
                 item.classList.add('lg:text-4xl')
                 item.classList.add('mt-4')
-                item.classList.add('mb-2')
                 item.classList.add('pt-2')
               })
             })
