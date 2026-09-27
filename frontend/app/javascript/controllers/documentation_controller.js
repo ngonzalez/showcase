@@ -37,6 +37,11 @@ export default class extends Controller {
             })
             .then((response) => {
               container.innerHTML = marked.parse(response.data)
+              _.each(container.getElementsByTagName('a'), (item, i) => {
+                if (item['href'].match(/\#/i)) {
+                  item.removeAttribute('href')
+                }
+              })
               _.each(container.getElementsByTagName('pre'), (item, i) => {
                 item.classList.add('shadow-sm')
                 item.classList.add('w-full')
