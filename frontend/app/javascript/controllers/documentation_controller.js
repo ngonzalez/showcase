@@ -15,11 +15,13 @@ export default class extends Controller {
     this.clearMenuLinks()
     _.each(document.getElementById('documentationMenu').querySelectorAll('a.menu-link'), (element, index) => {
       let href = element.getAttribute('href')
-      if (href == document.location.hash) {
-        if (documentation[href]) {
-          this.toggleStatus(element)
-          this.updateHtmlContainer('')
-          this.getTextFile(href)
+      if (href) {
+        if (href == document.location.hash) {
+          if (documentation[href]) {
+            this.toggleStatus(element)
+            this.updateHtmlContainer('')
+            this.getTextFile(href)
+          }
         }
       }
     })
@@ -49,19 +51,6 @@ export default class extends Controller {
     loading.style.display = 'none'
   }
 
-  toggleStatus(element) {
-    element.classList.add('active')
-    let statusElement = element.querySelectorAll('[aria-label="status"]')[0]
-    if (typeof statusElement != 'undefined') {
-      statusElement.style.visibility = 'visible'
-    }
-
-    let statusAnimatedElement = element.querySelectorAll('[aria-label="status-animated"]')[0]
-    if (typeof statusAnimatedElement != 'undefined') {
-      statusAnimatedElement.style.visibility = 'visible'
-    }
-  }
-
   clearMenuLinks() {
     _.each(document.getElementById('documentationMenu').querySelectorAll('a.menu-link'), (element, index) => {
       element.classList.remove('active')
@@ -78,6 +67,19 @@ export default class extends Controller {
     })
   }
 
+  toggleStatus(element) {
+    element.classList.add('active')
+    let statusElement = element.querySelectorAll('[aria-label="status"]')[0]
+    if (typeof statusElement != 'undefined') {
+      statusElement.style.visibility = 'visible'
+    }
+
+    let statusAnimatedElement = element.querySelectorAll('[aria-label="status-animated"]')[0]
+    if (typeof statusAnimatedElement != 'undefined') {
+      statusAnimatedElement.style.visibility = 'visible'
+    }
+  }
+
   getTextFile(href) {
     axios
       .get(documentation[href], {
@@ -86,7 +88,7 @@ export default class extends Controller {
         },
       })
       .then((response) => {
-        const html = marked.parse(response.data)
+        let html = marked.parse(response.data)
         this.updateHtmlContainer(html)
         this.formatText()
         this.hideLoadingBars()

@@ -1,0 +1,62 @@
+#documentationMenu {
+  font-color: #444444;
+  border: 2px solid #DDDDDD;
+}
+#documentationPage {
+  font-size: 15px;
+  font-color: #444444;
+}
+#documentationPage details {
+  margin: 0 15px;
+}
+#documentationPage div.drawer {
+  margin: 10px auto;
+}
+#documentationPage div.drawer-side {
+  overflow: hidden;
+}
+#documentationPage a.active {
+  text-decoration: underline;
+}
+#documentationPage [aria-label="status"],
+#documentationPage [aria-label="status-animated"] {
+  visibility: hidden;
+  margin: 0 5px;
+}
+#documentationPage h2 {
+  text-decoration: underline;
+}
+#documentationPage pre {
+  border: 1px solid #DDDDDD;
+  background: #FEFEFE;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+}
+#documentationPage table {
+  border: 1px solid #DDDDDD;
+  background: #FEFEFE;
+  margin: 20px 0;
+}
+#documentationPage table th {
+  text-align: left;
+  color: black;
+  background-color: #EEEEEE;
+  padding: 20px;
+}
+#documentationPage table td {
+  cursor:default;
+  text-align: left;
+  color: black;
+  padding: 20px;
+  background-color: transparent;
+}
+#documentationPage table td:hover {
+  background-color: #F4F4F4;
+}
+#documentationPage #loading {
+  margin: 50% 0;
+}
+#documentationPage label {
+  display: block;
+}

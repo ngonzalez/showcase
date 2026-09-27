@@ -4,199 +4,143 @@
      data-documentation-target="documentationPage">
 
   <input id="drawer" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content">
+  <div class="drawer-content mt-4">
     <span name="container"></span>
-    <div id="loading" align="center" style="margin: 50% 0;">
+    <div id="loading" align="center">
       <label class="text-base-content/70">Loading</label>
-      <br />
       <span class="loading loading-spinner text-neutral"></span>
     </div>
   </div>
 
   <div class="drawer-side">
     <label for="drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul id="documentationMenu" class="menu-md shadow-sm m-8 p-4">
-      <li data-action="click->documentation#clickSidebarMenu">
-        <a href="#documentation-index" class="menu-link">
-          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
-            <div class="status status-primary animate-ping"></div>
-            <div class="status status-primary"></div>
-          </div>
-          Index
-        </a>
-      </li>
-      <li data-action="click->documentation#clickSidebarMenu">
-        <a href="#desktop-application" class="menu-link">
-          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
-            <div class="status status-primary animate-ping"></div>
-            <div class="status status-primary"></div>
-          </div>
-          Desktop Application
-        </a>
-      </li>
-      <li>
-        <ul>
+    <div class="card">
+      <div class="card-body">
+        <ul id="documentationMenu" class="menu-sm shadow-sm white-bg m-8 p-4">
           <li data-action="click->documentation#clickSidebarMenu">
-            <a href="#quick-start" class="menu-link">
+            <a href="#documentation-index" class="menu-link">
               <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
                 <div class="status status-primary animate-ping"></div>
                 <div class="status status-primary"></div>
               </div>
-              Quick start
+              Index
+            </a>
+          </li>
+          <li data-action="click->documentation#clickSidebarMenu">
+            <a href="#desktop-application" class="menu-link">
+              <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                <div class="status status-primary animate-ping"></div>
+                <div class="status status-primary"></div>
+              </div>
+              Desktop Application
             </a>
           </li>
           <li>
-            <details open>
-              <summary>macOS</summary>
-              <ul>
-                <li data-action="click->documentation#clickSidebarMenu">
-                  <a href="#install-macos" class="menu-link">
-                    <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
-                      <div class="status status-primary animate-ping"></div>
-                      <div class="status status-primary"></div>
-                    </div>
-                    Install
-                  </a>
-                </li>
-                <li>
-                  <details open>
-                    <summary>How to</summary>
-                    <ul>
-                      <li data-action="click->documentation#clickSidebarMenu">
-                        <a href="#download-macos" class="menu-link">
-                          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
-                            <div class="status status-primary animate-ping"></div>
-                            <div class="status status-primary"></div>
-                          </div>
-                          Download from the app store
-                        </a>
-                      </li>
-                      <li data-action="click->documentation#clickSidebarMenu">
-                        <a href="#authorize-macos" class="menu-link">
-                          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
-                            <div class="status status-primary animate-ping"></div>
-                            <div class="status status-primary"></div>
-                          </div>
-                          Authorize the application
-                        </a>
-                      </li>
-                    </ul>
-                  </details>
-                </li>
-              </ul>
-            </details>
+            <ul>
+              <li data-action="click->documentation#clickSidebarMenu">
+                <a href="#quick-start" class="menu-link">
+                  <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                    <div class="status status-primary animate-ping"></div>
+                    <div class="status status-primary"></div>
+                  </div>
+                  Quick start
+                </a>
+              </li>
+              <li>
+                <details open>
+                  <summary>macOS</summary>
+                  <ul>
+                    <li data-action="click->documentation#clickSidebarMenu">
+                      <a href="#install-macos" class="menu-link">
+                        <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                          <div class="status status-primary animate-ping"></div>
+                          <div class="status status-primary"></div>
+                        </div>
+                        Install
+                      </a>
+                    </li>
+                    <li>
+                      <details open>
+                        <summary>How to</summary>
+                        <ul>
+                          <li data-action="click->documentation#clickSidebarMenu">
+                            <a href="#download-macos" class="menu-link">
+                              <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                                <div class="status status-primary animate-ping"></div>
+                                <div class="status status-primary"></div>
+                              </div>
+                              Download from the app store
+                            </a>
+                          </li>
+                          <li data-action="click->documentation#clickSidebarMenu">
+                            <a href="#authorize-macos" class="menu-link">
+                              <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                                <div class="status status-primary animate-ping"></div>
+                                <div class="status status-primary"></div>
+                              </div>
+                              Authorize the application
+                            </a>
+                          </li>
+                        </ul>
+                      </details>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+              <li>
+                <details open>
+                  <summary>Windows</summary>
+                  <ul>
+                    <li data-action="click->documentation#clickSidebarMenu">
+                      <a href="#install-windows" class="menu-link">
+                        <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                          <div class="status status-primary animate-ping"></div>
+                          <div class="status status-primary"></div>
+                        </div>
+                        Install
+                      </a>
+                    </li>
+                    <li>
+                      <details open>
+                        <summary>How to</summary>
+                        <ul>
+                          <li data-action="click->documentation#clickSidebarMenu">
+                            <a href="#download-windows" class="menu-link">
+                              <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                                <div class="status status-primary animate-ping"></div>
+                                <div class="status status-primary"></div>
+                              </div>
+                              Download from the windows store
+                            </a>
+                          </li>
+                          <li data-action="click->documentation#clickSidebarMenu">
+                            <a href="#authorize-windows" class="menu-link">
+                              <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                                <div class="status status-primary animate-ping"></div>
+                                <div class="status status-primary"></div>
+                              </div>
+                              Authorize the application
+                            </a>
+                          </li>
+                        </ul>
+                      </details>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
           </li>
-          <li>
-            <details open>
-              <summary>Windows</summary>
-              <ul>
-                <li data-action="click->documentation#clickSidebarMenu">
-                  <a href="#install-windows" class="menu-link">
-                    <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
-                      <div class="status status-primary animate-ping"></div>
-                      <div class="status status-primary"></div>
-                    </div>
-                    Install
-                  </a>
-                </li>
-                <li>
-                  <details open>
-                    <summary>How to</summary>
-                    <ul>
-                      <li data-action="click->documentation#clickSidebarMenu">
-                        <a href="#download-windows" class="menu-link">
-                          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
-                            <div class="status status-primary animate-ping"></div>
-                            <div class="status status-primary"></div>
-                          </div>
-                          Download from the windows store
-                        </a>
-                      </li>
-                      <li data-action="click->documentation#clickSidebarMenu">
-                        <a href="#authorize-windows" class="menu-link">
-                          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
-                            <div class="status status-primary animate-ping"></div>
-                            <div class="status status-primary"></div>
-                          </div>
-                          Authorize the application
-                        </a>
-                      </li>
-                    </ul>
-                  </details>
-                </li>
-              </ul>
-            </details>
+          <li data-action="click->documentation#clickSidebarMenu">
+            <a href="#web-application" class="menu-link">
+              <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
+                <div class="status status-primary animate-ping"></div>
+                <div class="status status-primary"></div>
+              </div>
+              Use the web application
+            </a>
           </li>
         </ul>
-      </li>
-      <li data-action="click->documentation#clickSidebarMenu">
-        <a href="#web-application" class="menu-link">
-          <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
-            <div class="status status-primary animate-ping"></div>
-            <div class="status status-primary"></div>
-          </div>
-          Use the web application
-        </a>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </div>
-
-<style type="text/css">
-  #documentationMenu {
-    font-color: #444444;
-    border: 2px solid #DDDDDD;
-  }
-  #documentationPage {
-    font-size: 15px;
-    font-color: #444444;
-  }
-  #documentationPage details {
-    margin: 0 15px;
-  }
-  #documentationPage div.drawer {
-    margin: 10px auto;
-  }
-  #documentationPage div.drawer-side {
-    overflow: hidden;
-  }
-  #documentationPage a.active {
-    text-decoration: underline;
-  }
-  #documentationPage [aria-label="status"],
-  #documentationPage [aria-label="status-animated"] {
-    visibility: hidden;
-    margin: 0 5px;
-  }
-  #documentationPage h2 {
-    text-decoration: underline;
-  }
-  #documentationPage pre {
-    border: 1px solid #DDDDDD;
-    background: #FEFEFE;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px 0;
-  }
-  #documentationPage table {
-    border: 1px solid #DDDDDD;
-    background: #FEFEFE;
-    margin: 20px 0;
-  }
-  #documentationPage table th {
-    text-align: left;
-    color: black;
-    background-color: #EEEEEE;
-    padding: 20px;
-  }
-  #documentationPage table td {
-    cursor:default;
-    text-align: left;
-    color: black;
-    padding: 20px;
-    background-color: transparent;
-  }
-  #documentationPage table td:hover {
-    background-color: #F4F4F4;
-  }
-</style>
