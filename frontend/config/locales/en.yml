@@ -28,6 +28,27 @@
 #       enabled: "ON"
 
 en:
+  header:
+    appshare: "appshare"
+    documentation: "Documentation"
+    download: "Download App"
+    macos: "macOS client"
+    windows: "Windows client"
+  footer:
+    services:
+      name: "Services"
+      web_publishing: "Web Publishing"
+    company:
+      name: "Company"
+      information: "Information"
+      contact: "Contact"
+    legal:
+      name: "Legal"
+      terms_of_use: "Terms of use"
+      privacy_policy: "Privacy policy"
+    newsletter:
+      name: "Newsletter"
+      subscribe: "Subscribe"
   home:
     service_name: "Web Publishing Services"
     service_details: "Premium offers: 5GB and 10GB of data hosted on cloud<br />Up to 3 and 10 users per account<br />Unlimited bandwitdth"

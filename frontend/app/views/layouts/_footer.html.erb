@@ -1,20 +1,38 @@
 <footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
   <nav>
-    <h6 class="footer-title">Services</h6>
-    <a class="link link-hover">Web Publishing</a>
+    <h6 class="footer-title">
+      <%= I18n.t('footer.services.name') %>
+    </h6>
+    <a class="link link-hover">
+      <%= I18n.t('footer.services.web_publishing') %>
+    </a>
   </nav>
   <nav>
-    <h6 class="footer-title">Company</h6>
-    <a class="link link-hover">Information</a>
-    <a class="link link-hover">Contact</a>
+    <h6 class="footer-title">
+      <%= I18n.t('footer.company.name') %>
+    </h6>
+    <a class="link link-hover">
+      <%= I18n.t('footer.company.information') %>
+    </a>
+    <a class="link link-hover">
+      <%= I18n.t('footer.company.contact') %>
+    </a>
   </nav>
   <nav>
-    <h6 class="footer-title">Legal</h6>
-    <a class="link link-hover">Terms of use</a>
-    <a class="link link-hover">Privacy policy</a>
+    <h6 class="footer-title">
+      <%= I18n.t('footer.legal.name') %>
+    </h6>
+    <a class="link link-hover">
+      <%= I18n.t('footer.legal.terms_of_use') %>
+    </a>
+    <a class="link link-hover">
+      <%= I18n.t('footer.legal.privacy_policy') %>
+    </a>
   </nav>
   <%= form_with url: newsletter_path do |_form| %>
-    <h6 class="footer-title">Newsletter</h6>
+    <h6 class="footer-title">
+      <%= I18n.t('footer.newsletter.name') %>
+    </h6>
     <fieldset class="w-80">
       <div class="join">
         <input
@@ -23,7 +41,9 @@
           placeholder="mail@site.com"
           class="input validator join-item"
           name="email" />
-        <button class="btn btn-primary join-item">Subscribe</button>
+        <button class="btn btn-primary join-item">
+          <%= I18n.t('footer.newsletter.subscribe') %>
+        </button>
       </div>
     </fieldset>
   <% end %>

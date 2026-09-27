@@ -1,23 +1,37 @@
 <div class="navbar bg-base-200">
   <div class="ps-4">
-    <a class="text-lg font-bold" href="/home">appshare</a>
+    <a class="text-lg font-bold" href="/home">
+      <%= I18n.t('header.appshare') %>
+    </a>
   </div>
   <div class="flex grow justify-end px-2">
     <div class="flex items-stretch">
       <a class="btn btn-ghost rounded-field" href="/documentation#documentation-index">
         <span class="material-symbols-outlined">developer_guide</span>
-        <button>Documentation</button></a>
+        <button>
+          <%= I18n.t('header.documentation') %>
+        </button>
       </a>
       <div class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-ghost">
           <span class="material-symbols-outlined">download</span>
-          <button>Download App</button>
+          <button>
+            <%= I18n.t('header.download') %>
+          </button>
         </div>
         <ul
           tabindex="-1"
           class="menu dropdown-content bg-base-200 rounded-box z-1 mt-4 w-52 p-2 shadow-sm">
-          <li><a href="#">macOS client</a></li>
-          <li><a href="#">Windows client</a></li>
+          <li>
+            <a href="#macos">
+              <%= I18n.t('header.macos') %>
+            </a>
+          </li>
+          <li>
+            <a href="#windows">
+              <%= I18n.t('header.windows') %>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
