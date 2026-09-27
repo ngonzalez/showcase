@@ -12,9 +12,6 @@ gem "pg"
 # Use the Puma web server [https://github.com/puma/puma/tags]
 gem "puma", github: "puma/puma", tag: "v8.0.2"
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder"
-
 # Hotwire"s modest JavaScript framework
 # [https://stimulus.hotwired.dev]
 gem "stimulus-rails"

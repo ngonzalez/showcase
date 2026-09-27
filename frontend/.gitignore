@@ -14,8 +14,10 @@
 
 # bootsnap
 /tmp/cache/bootsnap
+/tmp/restart.txt
 
 # assets
+/public/assets/
 /app/assets/builds
 
 # node_modules
