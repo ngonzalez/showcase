@@ -37,17 +37,6 @@ export default class extends Controller {
             })
             .then((response) => {
               container.innerHTML = marked.parse(response.data)
-              _.each(container.getElementsByTagName('pre'), (item, i) => {
-                let div = document.createElement('div')
-                div.classList.add('mockup-code')
-                div.classList.add('w-full')
-                div.classList.add('mt-4')
-                div.classList.add('mb-4')
-                div.classList.add('p-4')
-                div.innerHTML = item.innerHTML
-                item.parentNode.insertBefore(div, item.nextSibling)
-                item.style.display = 'none'
-              })
               _.each(container.getElementsByTagName('h4'), (item, i) => {
                 item.classList.add('font-title')
                 item.classList.add('text-1xl')
