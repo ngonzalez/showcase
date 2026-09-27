@@ -92,6 +92,7 @@ export default class extends Controller {
         this.updateHtmlContainer(html)
         this.formatText()
         this.hideLoadingBars()
+        document.location.hash = href
       })
   }
 
