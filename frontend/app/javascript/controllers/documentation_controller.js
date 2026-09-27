@@ -24,10 +24,14 @@ export default class extends Controller {
   }
 
   clickSidebarMenu(event) {
+    event.preventDefault()
     let href = event.target.getAttribute('href')
     if (href) {
       this.clearMenuLinks()
       this.toggleStatus(event.target)
+      if (documentation[href]) {
+        this.getTextFile(href)
+      }
     }
   }
 
