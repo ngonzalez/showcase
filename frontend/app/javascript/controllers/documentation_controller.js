@@ -97,7 +97,6 @@ export default class extends Controller {
       item.classList.add('md:text-1xl')
       item.classList.add('lg:text-2xl')
       item.classList.add('mt-2')
-      item.classList.add('mb-2')
       item.classList.add('pt-2')
     })
     _.each(container.getElementsByTagName('h3'), (item, i) => {
@@ -106,7 +105,6 @@ export default class extends Controller {
       item.classList.add('md:text-1xl')
       item.classList.add('lg:text-2xl')
       item.classList.add('mt-2')
-      item.classList.add('mb-2')
       item.classList.add('pt-2')
     })
     _.each(container.getElementsByTagName('h2'), (item, i) => {
@@ -114,7 +112,7 @@ export default class extends Controller {
       item.classList.add('text-1xl')
       item.classList.add('md:text-2xl')
       item.classList.add('lg:text-3xl')
-      item.classList.add('mt-4')
+      item.classList.add('mt-2')
       item.classList.add('pt-2')
     })
     _.each(container.getElementsByTagName('h1'), (item, i) => {

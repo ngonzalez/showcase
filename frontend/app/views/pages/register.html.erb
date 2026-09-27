@@ -64,7 +64,7 @@
             <td align="center">
               <!-- Company Name -->
               <label class="w-96 input validator" for="user[companyName]">
-                <span class="label white-rounded">
+                <span class="label white-bg">
                   <%= render(partial: "icons/company") %>
                   <%= I18n.t('form.register.company_name') %>
                 </span>
@@ -87,7 +87,7 @@
             <td align="center">
               <!-- First Name -->
               <label class="w-96 input validator" for="user[firstName]">
-                <span class="label white-rounded">
+                <span class="label white-bg">
                   <%= render(partial: "icons/account") %>
                   <%= I18n.t('form.register.first_name') %>
                 </span>
@@ -110,7 +110,7 @@
             <td align="center">
               <!-- Last Name -->
               <label class="w-96 input validator" for="user[lastName]">
-                <span class="label white-rounded">
+                <span class="label white-bg">
                   <%= render(partial: "icons/account") %>
                   <%= I18n.t('form.register.last_name') %>
                 </span>
@@ -133,7 +133,7 @@
             <td align="center">
               <!-- Email Address -->
               <label class="w-96 input validator" for="user[emailAddress]">
-                <span class="label white-rounded">
+                <span class="label white-bg">
                   <%= render(partial: "icons/mail") %>
                   <%= I18n.t('form.register.email_address') %>
                 </span>
@@ -164,7 +164,7 @@
             <td align="center">
               <!-- Postal Code -->
               <label class="w-96 input validator" for="user[postalCode]">
-                <span class="label white-rounded">
+                <span class="label white-bg">
                   <%= render(partial: "icons/postal_code") %>
                   <%= I18n.t('form.register.postal_code') %>
                 </span>
@@ -187,7 +187,7 @@
             <td align="center">
               <!-- City -->
               <label class="w-96 input validator" for="user[city]">
-                <span class="label white-rounded">
+                <span class="label white-bg">
                   <%= render(partial: "icons/city") %>
                   <%= I18n.t('form.register.city') %>
                 </span>
@@ -210,7 +210,7 @@
             <td align="center">
               <!-- Country -->
               <label class="w-96 select validator" for="user[country]">
-                <span class="label white-rounded">
+                <span class="label white-bg">
                   <%= render(partial: "icons/world") %>
                   <%= I18n.t('form.register.country') %>
                 </span>
@@ -233,7 +233,7 @@
             <td align="center">
               <!-- Plan -->
               <label class="w-96 select validator" for="user[plan]">
-                <span class="label white-rounded">
+                <span class="label white-bg">
                   <%= render(partial: "icons/tag") %>
                   <%= I18n.t('form.register.plan') %>
                 </span>
@@ -259,7 +259,7 @@
             <td align="center">
               <!-- Password -->
               <label class="w-96 input validator">
-                <span class="label white-rounded">
+                <span class="label white-bg">
                   <%= render(partial: "icons/password") %>
                   <%= I18n.t('form.register.password') %>
                 </span>
@@ -282,7 +282,7 @@
             <td align="center">
               <!-- Password confirmation -->
               <label class="w-96 input validator">
-                <span class="label white-rounded">
+                <span class="label white-bg">
                   <%= render(partial: "icons/password") %>
                   <%= I18n.t('form.register.password_confirmation') %>
                 </span>
@@ -325,11 +325,7 @@
   </div>
 </div>
 <style type="text/css">
-  label {
-    color: #000 !important;
-  }
-  .white-rounded {
+  .white-bg {
     background: #FEFEFE;
-    border-radius: 20px;
   }
 </style>
