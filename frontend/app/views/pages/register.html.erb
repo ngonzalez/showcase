@@ -29,7 +29,7 @@
         </thead>
         <tbody>
           <tr>
-            <td align="center" class="w-96">
+            <td align="center" class="w-full">
               <table>
                 <tr>
                   <td>
@@ -63,8 +63,8 @@
           <tr>
             <td align="center">
               <!-- Company Name -->
-              <label class="w-96 input validator" for="user[companyName]">
-                <span class="label white-bg">
+              <label class="w-full input validator" for="user[companyName]">
+                <span class="label text-black bg-white">
                   <%= render(partial: "icons/company") %>
                   <%= I18n.t('form.register.company_name') %>
                 </span>
@@ -86,8 +86,8 @@
           <tr>
             <td align="center">
               <!-- First Name -->
-              <label class="w-96 input validator" for="user[firstName]">
-                <span class="label white-bg">
+              <label class="w-full input validator" for="user[firstName]">
+                <span class="label text-black bg-white">
                   <%= render(partial: "icons/account") %>
                   <%= I18n.t('form.register.first_name') %>
                 </span>
@@ -109,8 +109,8 @@
           <tr>
             <td align="center">
               <!-- Last Name -->
-              <label class="w-96 input validator" for="user[lastName]">
-                <span class="label white-bg">
+              <label class="w-full input validator" for="user[lastName]">
+                <span class="label text-black bg-white">
                   <%= render(partial: "icons/account") %>
                   <%= I18n.t('form.register.last_name') %>
                 </span>
@@ -132,8 +132,8 @@
           <tr>
             <td align="center">
               <!-- Email Address -->
-              <label class="w-96 input validator" for="user[emailAddress]">
-                <span class="label white-bg">
+              <label class="w-full input validator" for="user[emailAddress]">
+                <span class="label text-black bg-white">
                   <%= render(partial: "icons/mail") %>
                   <%= I18n.t('form.register.email_address') %>
                 </span>
@@ -154,7 +154,7 @@
               <textarea data-action="input->register#input"
                         required
                         name="user[address]"
-                        class="w-96 textarea"
+                        class="textarea w-full text-black bg-white"
                         pattern="[A-Za-z][A-Za-z0-9\- ]*"
                         title="<%= I18n.t('validation.allowed_values_message') %>"
                         placeholder="<%= I18n.t('form.register.address_placeholder') %>"></textarea>
@@ -163,8 +163,8 @@
           <tr>
             <td align="center">
               <!-- Postal Code -->
-              <label class="w-96 input validator" for="user[postalCode]">
-                <span class="label white-bg">
+              <label class="w-full input validator" for="user[postalCode]">
+                <span class="label text-black bg-white">
                   <%= render(partial: "icons/postal_code") %>
                   <%= I18n.t('form.register.postal_code') %>
                 </span>
@@ -186,8 +186,8 @@
           <tr>
             <td align="center">
               <!-- City -->
-              <label class="w-96 input validator" for="user[city]">
-                <span class="label white-bg">
+              <label class="w-full input validator" for="user[city]">
+                <span class="label text-black bg-white">
                   <%= render(partial: "icons/city") %>
                   <%= I18n.t('form.register.city') %>
                 </span>
@@ -209,8 +209,8 @@
           <tr>
             <td align="center">
               <!-- Country -->
-              <label class="w-96 select validator" for="user[country]">
-                <span class="label white-bg">
+              <label class="w-full select validator" for="user[country]">
+                <span class="label text-black bg-white">
                   <%= render(partial: "icons/world") %>
                   <%= I18n.t('form.register.country') %>
                 </span>
@@ -232,8 +232,8 @@
           <tr>
             <td align="center">
               <!-- Plan -->
-              <label class="w-96 select validator" for="user[plan]">
-                <span class="label white-bg">
+              <label class="w-full select validator" for="user[plan]">
+                <span class="label text-black bg-white">
                   <%= render(partial: "icons/tag") %>
                   <%= I18n.t('form.register.plan') %>
                 </span>
@@ -258,8 +258,8 @@
           <tr>
             <td align="center">
               <!-- Password -->
-              <label class="w-96 input validator">
-                <span class="label white-bg">
+              <label class="w-full input validator">
+                <span class="label text-black bg-white">
                   <%= render(partial: "icons/password") %>
                   <%= I18n.t('form.register.password') %>
                 </span>
@@ -281,8 +281,8 @@
           <tr>
             <td align="center">
               <!-- Password confirmation -->
-              <label class="w-96 input validator">
-                <span class="label white-bg">
+              <label class="w-full input validator">
+                <span class="label text-black bg-white">
                   <%= render(partial: "icons/password") %>
                   <%= I18n.t('form.register.password_confirmation') %>
                 </span>
@@ -302,7 +302,7 @@
           </tr>
           <tr>
             <td align="center">
-              <label class="label">
+              <label class="label text-black">
                 <input data-action="change->register#inputChanged"
                        required
                        name="user[agreeToTermsAndConditions]"
