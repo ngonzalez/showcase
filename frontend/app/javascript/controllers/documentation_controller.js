@@ -11,6 +11,7 @@ export default class extends Controller {
   static targets = [ 'documentationPage']
 
   connect() {
+    this.showLoadingBars()
     this.clearMenuLinks()
     _.each(document.getElementById('documentationMenu').querySelectorAll('a.menu-link'), (element, index) => {
       let href = element.getAttribute('href')
@@ -27,12 +28,23 @@ export default class extends Controller {
     event.preventDefault()
     let href = event.target.getAttribute('href')
     if (href) {
+      this.showLoadingBars()
       this.clearMenuLinks()
       this.toggleStatus(event.target)
       if (documentation[href]) {
         this.getTextFile(href)
       }
     }
+  }
+
+  showLoadingBars() {
+    let loading = document.getElementById('loading')
+    loading.style.display = 'block'
+  }
+
+  hideLoadingBars() {
+    let loading = document.getElementById('loading')
+    loading.style.display = 'none'
   }
 
   toggleStatus(element) {
@@ -65,6 +77,9 @@ export default class extends Controller {
   }
 
   getTextFile(href) {
+    let container = this.documentationPageTarget.querySelectorAll('[name="container"]')[0]
+    container.innerHTML = ''
+
     axios
       .get(documentation[href], {
         headers: {
@@ -75,6 +90,7 @@ export default class extends Controller {
         let container = this.documentationPageTarget.querySelectorAll('[name="container"]')[0]
         container.innerHTML = marked.parse(response.data)
         this.formatText(container)
+        this.hideLoadingBars()
       })
   }
 
