@@ -2,14 +2,15 @@
      id="documentationPage"
      data-controller="documentation"
      data-documentation-target="documentationPage">
-  <input id="my-drawer-1" type="checkbox" class="drawer-toggle" />
+
+  <input id="drawer" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content">
     <span name="container"></span>
   </div>
+
   <div class="drawer-side">
-    <label for="my-drawer-1" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul id="documentationMenu" class="menu-sm m-8 p-4">
-      <!-- Sidebar content here -->
+    <label for="drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+    <ul id="documentationMenu" class="menu-md shadow-sm m-8 p-4">
       <li data-action="click->documentation#clickSidebarMenu">
         <a href="#documentation-index" class="menu-link">
           <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
@@ -138,7 +139,7 @@
 
 <style type="text/css">
   #documentationMenu {
-    border: 3px solid #EEEEEE;
+    border: 2px solid #DDDDDD;
   }
   #documentationPage details {
     margin: 0 15px;
@@ -157,22 +158,25 @@
     visibility: hidden;
     margin: 0 5px;
   }
+  #documentationPage h2 {
+    text-decoration: underline;
+  }
   #documentationPage pre {
-    border: 1px solid #DDD;
+    border: 1px solid #DDDDDD;
     background: #FEFEFE;
     border-radius: 10px;
     padding: 10px;
     margin: 10px 0;
   }
   #documentationPage table {
-    border: 1px solid #DDD;
+    border: 1px solid #DDDDDD;
     background: #FEFEFE;
     margin: 20px 0;
   }
   #documentationPage table th {
     text-align: left;
     color: black;
-    background-color: #EEE;
+    background-color: #EEEEEE;
     padding: 20px;
   }
   #documentationPage table td {
