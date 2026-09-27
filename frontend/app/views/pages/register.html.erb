@@ -1,4 +1,4 @@
-<div style="margin: auto;" class="overflow-x-auto">
+<div class="overflow-x-auto margin-auto">
   <div align="center" class="mt-8 pt-4">
     <ul class="steps">
       <li class="step step-neutral">
@@ -237,7 +237,6 @@
                   <%= render(partial: "icons/tag") %>
                   <%= I18n.t('form.register.plan') %>
                 </span>
-                <%= render(partial: "icons/password") %>
                 <select data-action="change->register#input"
                         required
                         name="user[plan]"
