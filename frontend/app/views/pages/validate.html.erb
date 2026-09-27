@@ -42,7 +42,9 @@
             <% if local_assigns[:user][:payload].try(:[], :accountType) == "company" %>
               <tr>
                 <td>
-                  <label class="label"><%= I18n.t('form.register.company_name') %></label>
+                  <label class="label">
+                    <%= I18n.t('form.register.company_name') %>
+                  </label>
                 </td>
                 <td>
                   <%= local_assigns[:user][:payload].try(:[], :companyName) %>
@@ -52,7 +54,9 @@
             <% end %>
             <tr>
               <td>
-                <label class="label"><%= I18n.t('form.register.first_name') %></label>
+                <label class="label">
+                  <%= I18n.t('form.register.first_name') %>
+                </label>
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :firstName) %>
@@ -61,7 +65,9 @@
             </tr>
             <tr>
               <td>
-                <label class="label"><%= I18n.t('form.register.last_name') %></label>
+                <label class="label">
+                  <%= I18n.t('form.register.last_name') %>
+                </label>
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :lastName) %>
@@ -70,7 +76,9 @@
             </tr>
             <tr>
               <td>
-                <label class="label"><%= I18n.t('form.register.email_address') %></label>
+                <label class="label">
+                  <%= I18n.t('form.register.email_address') %>
+                </label>
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :emailAddress) %>
@@ -79,7 +87,9 @@
             </tr>
             <tr>
               <td>
-                <label class="label"><%= I18n.t('form.register.address') %></label>
+                <label class="label">
+                  <%= I18n.t('form.register.address') %>
+                </label>
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :address) %>
@@ -88,7 +98,9 @@
             </tr>
             <tr>
               <td>
-                <label class="label"><%= I18n.t('form.register.postal_code') %></label>
+                <label class="label">
+                  <%= I18n.t('form.register.postal_code') %>
+                </label>
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :postalCode) %>
@@ -97,7 +109,9 @@
             </tr>
             <tr>
               <td>
-                <label class="label"><%= I18n.t('form.register.city') %></label>
+                <label class="label">
+                  <%= I18n.t('form.register.city') %>
+                </label>
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :city) %>
@@ -106,7 +120,9 @@
             </tr>
             <tr>
               <td>
-                <label class="label"><%= I18n.t('form.register.country') %></label>
+                <label class="label">
+                  <%= I18n.t('form.register.country') %>
+                </label>
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :country) %>
@@ -115,16 +131,13 @@
             </tr>
             <tr>
               <td>
-                <label class="label"><%= I18n.t('form.register.plan') %></label>
+                <label class="label">
+                  <%= I18n.t('form.register.plan') %>
+                </label>
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :plan) %>
                 <%= hidden_field_tag("plan", local_assigns[:user][:payload].try(:[], :plan)) %>
-
-                <!-- password -->
-                <%= hidden_field_tag("password", local_assigns[:user][:payload].try(:[], :password)) %>
-                <!-- password confirmation -->
-                <%= hidden_field_tag("passwordConfirmation", local_assigns[:user][:payload].try(:[], :passwordConfirmation)) %>
               </td>
             </tr>
             <tr>
@@ -137,6 +150,9 @@
             </tr>
           </tbody>
         </table>
+        <!-- hidden fields -->
+        <%= hidden_field_tag("password", local_assigns[:user][:payload].try(:[], :password)) %>
+        <%= hidden_field_tag("passwordConfirmation", local_assigns[:user][:payload].try(:[], :passwordConfirmation)) %>
       </div>
     <% end %>
   </div>
