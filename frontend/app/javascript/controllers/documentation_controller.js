@@ -16,8 +16,9 @@ export default class extends Controller {
     _.each(document.getElementById('documentationMenu').querySelectorAll('a.menu-link'), (element, index) => {
       let href = element.getAttribute('href')
       if (href == document.location.hash) {
-        this.toggleStatus(element)
         if (documentation[href]) {
+          this.toggleStatus(element)
+          this.updateHtmlContainer('')
           this.getTextFile(href)
         }
       }
@@ -26,12 +27,13 @@ export default class extends Controller {
 
   clickSidebarMenu(event) {
     event.preventDefault()
+    this.showLoadingBars()
+    this.clearMenuLinks()
     let href = event.target.getAttribute('href')
     if (href) {
-      this.showLoadingBars()
-      this.clearMenuLinks()
-      this.toggleStatus(event.target)
       if (documentation[href]) {
+        this.toggleStatus(event.target)
+        this.updateHtmlContainer('')
         this.getTextFile(href)
       }
     }
@@ -77,9 +79,6 @@ export default class extends Controller {
   }
 
   getTextFile(href) {
-    let container = this.documentationPageTarget.querySelectorAll('[name="container"]')[0]
-    container.innerHTML = ''
-
     axios
       .get(documentation[href], {
         headers: {
@@ -87,14 +86,20 @@ export default class extends Controller {
         },
       })
       .then((response) => {
-        let container = this.documentationPageTarget.querySelectorAll('[name="container"]')[0]
-        container.innerHTML = marked.parse(response.data)
-        this.formatText(container)
+        const html = marked.parse(response.data)
+        this.updateHtmlContainer(html)
+        this.formatText()
         this.hideLoadingBars()
       })
   }
 
-  formatText(container) {
+  updateHtmlContainer(content) {
+    let container = this.documentationPageTarget.querySelectorAll('[name="container"]')[0]
+    container.innerHTML = content
+  }
+
+  formatText() {
+    let container = this.documentationPageTarget.querySelectorAll('[name="container"]')[0]
     _.each(container.getElementsByTagName('a'), (item, i) => {
       if (item['href'].match(/\#/i)) {
         item.removeAttribute('href')
