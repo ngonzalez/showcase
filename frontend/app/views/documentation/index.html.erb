@@ -7,7 +7,9 @@
   <div class="drawer-content mt-4">
     <span name="container"></span>
     <div id="loading" align="center">
-      <label class="text-base-content/70">Loading</label>
+      <label class="text-base-content/70">
+        <%= I18n.t('documentation.loading') %>
+      </label>
       <span class="loading loading-spinner text-neutral"></span>
     </div>
   </div>
@@ -16,14 +18,14 @@
     <label for="drawer" aria-label="close sidebar" class="drawer-overlay"></label>
     <div class="card">
       <div class="card-body">
-        <ul id="documentationMenu" class="menu-sm shadow-sm bg-white m-8 p-4">
+        <ul id="documentationMenu" class="menu-sm shadow-sm text-black bg-white m-8 p-4">
           <li data-action="click->documentation#clickSidebarMenu">
             <a href="#documentation-index" class="menu-link">
               <div aria-label="status-animated" class="inline-grid *:[grid-area:1/1]">
                 <div class="status status-primary animate-ping"></div>
                 <div class="status status-primary"></div>
               </div>
-              Index
+              <%= I18n.t('documentation.index') %>
             </a>
           </li>
           <li data-action="click->documentation#clickSidebarMenu">
@@ -32,7 +34,7 @@
                 <div class="status status-primary animate-ping"></div>
                 <div class="status status-primary"></div>
               </div>
-              Desktop Application
+              <%= I18n.t('documentation.desktop_application') %>
             </a>
           </li>
           <li>
@@ -43,12 +45,12 @@
                     <div class="status status-primary animate-ping"></div>
                     <div class="status status-primary"></div>
                   </div>
-                  Quick start
+                  <%= I18n.t('documentation.quick_start') %>
                 </a>
               </li>
               <li>
                 <details open>
-                  <summary>macOS</summary>
+                  <summary><%= I18n.t('documentation.macos.os_name') %></summary>
                   <ul>
                     <li data-action="click->documentation#clickSidebarMenu">
                       <a href="#install-macos" class="menu-link">
@@ -56,12 +58,12 @@
                           <div class="status status-primary animate-ping"></div>
                           <div class="status status-primary"></div>
                         </div>
-                        Install
+                        <%= I18n.t('documentation.macos.install') %>
                       </a>
                     </li>
                     <li>
                       <details open>
-                        <summary>How to</summary>
+                        <summary><%= I18n.t('documentation.macos.how_to') %></summary>
                         <ul>
                           <li data-action="click->documentation#clickSidebarMenu">
                             <a href="#download-macos" class="menu-link">
@@ -69,7 +71,7 @@
                                 <div class="status status-primary animate-ping"></div>
                                 <div class="status status-primary"></div>
                               </div>
-                              Download from the app store
+                              <%= I18n.t('documentation.macos.download') %>
                             </a>
                           </li>
                           <li data-action="click->documentation#clickSidebarMenu">
@@ -78,7 +80,7 @@
                                 <div class="status status-primary animate-ping"></div>
                                 <div class="status status-primary"></div>
                               </div>
-                              Authorize the application
+                              <%= I18n.t('documentation.macos.authorize') %>
                             </a>
                           </li>
                         </ul>
@@ -89,7 +91,7 @@
               </li>
               <li>
                 <details open>
-                  <summary>Windows</summary>
+                  <summary><%= I18n.t('documentation.windows.os_name') %></summary>
                   <ul>
                     <li data-action="click->documentation#clickSidebarMenu">
                       <a href="#install-windows" class="menu-link">
@@ -97,12 +99,12 @@
                           <div class="status status-primary animate-ping"></div>
                           <div class="status status-primary"></div>
                         </div>
-                        Install
+                        <%= I18n.t('documentation.windows.install') %>
                       </a>
                     </li>
                     <li>
                       <details open>
-                        <summary>How to</summary>
+                        <summary><%= I18n.t('documentation.windows.how_to') %></summary>
                         <ul>
                           <li data-action="click->documentation#clickSidebarMenu">
                             <a href="#download-windows" class="menu-link">
@@ -110,7 +112,7 @@
                                 <div class="status status-primary animate-ping"></div>
                                 <div class="status status-primary"></div>
                               </div>
-                              Download from the windows store
+                              <%= I18n.t('documentation.windows.download') %>
                             </a>
                           </li>
                           <li data-action="click->documentation#clickSidebarMenu">
@@ -119,7 +121,7 @@
                                 <div class="status status-primary animate-ping"></div>
                                 <div class="status status-primary"></div>
                               </div>
-                              Authorize the application
+                              <%= I18n.t('documentation.windows.authorize') %>
                             </a>
                           </li>
                         </ul>
@@ -136,7 +138,7 @@
                 <div class="status status-primary animate-ping"></div>
                 <div class="status status-primary"></div>
               </div>
-              Use the web application
+              <%= I18n.t('documentation.web_application') %>
             </a>
           </li>
         </ul>

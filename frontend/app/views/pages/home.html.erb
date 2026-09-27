@@ -7,17 +7,15 @@
             <div class="hero-content text-center">
               <div class="max-w-md">
                 <p class="text-5xl font-bold">
-                  Web Publishing Services
+                  <%= I18n.t('home.service_name') %>
                 </p>
                 <p class="py-6">
-                  Premium offers: 5GB and 10GB of data hosted on cloud
-                  <br />
-                  Up to 3 and 10 users per account
-                  <br />
-                  Unlimited bandwitdth
+                  <%= I18n.t('home.service_details').html_safe %>
                 </p>
                 <a href="/plans">
-                  <button class="btn btn-primary">Get Started</button>
+                  <button class="btn btn-primary">
+                    <%= I18n.t('home.get_started') %>
+                  </button>
                 </a>
               </div>
             </div>
@@ -29,18 +27,30 @@
           <div class="join join-vertical bg-base-100 m-10">
             <div class="collapse collapse-arrow join-item border-base-300 border">
               <input type="radio" name="my-accordion-4" checked="checked" />
-              <div class="collapse-title font-semibold">What is Appshare ?</div>
-              <div class="collapse-content text-sm">Appshare is a company specialized in publishing documents or media files as html components hosted on our public web site. With our desktop applications you can upload images, documents (text, markdown, pdf), or media files (audio, video) and start sharing immediatly with your contacts.</div>
+              <div class="collapse-title font-semibold">
+                <%= I18n.t('home.questions_answers.question_1') %>
+              </div>
+              <div class="collapse-content text-sm">
+                <%= I18n.t('home.questions_answers.answer_1').html_safe %>
+              </div>
             </div>
             <div class="collapse collapse-arrow join-item border-base-300 border">
               <input type="radio" name="my-accordion-4" />
-              <div class="collapse-title font-semibold">How much does the service cost?</div>
-              <div class="collapse-content text-sm">The service costs 29€ per month for the 5GB Premium plan, with up to 3 users for the account. For the 10GB Premium plan the service costs 39€ per month with up to 10 users for the account. The payment is done with Apple In-App Subscriptions.</div>
+              <div class="collapse-title font-semibold">
+                <%= I18n.t('home.questions_answers.question_2') %>
+              </div>
+              <div class="collapse-content text-sm">
+                <%= I18n.t('home.questions_answers.answer_2').html_safe %>
+              </div>
             </div>
             <div class="collapse collapse-arrow join-item border-base-300 border">
               <input type="radio" name="my-accordion-4" />
-              <div class="collapse-title font-semibold">How do I subscribe</div>
-              <div class="collapse-content text-sm">Click on the <i>Get Started</i> link above and follow instructions to register an account. The subscription process will happen when you start using the macOS or PC desktop application.</div>
+              <div class="collapse-title font-semibold">
+                <%= I18n.t('home.questions_answers.question_3') %>
+              </div>
+              <div class="collapse-content text-sm">
+                <%= I18n.t('home.questions_answers.answer_3').html_safe %>
+              </div>
             </div>
           </div>
         </td>

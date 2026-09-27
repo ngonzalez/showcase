@@ -5,28 +5,36 @@
         <td>
           <div class="card w-96 bg-white shadow-sm">
             <div class="card-body">
-              <span class="badge badge-xs badge-warning">Most Popular</span>
+              <span class="badge badge-xs badge-warning">
+                <%= I18n.t('choose_plan.most_popular')%>
+              </span>
               <div class="flex justify-between">
-                <h2 class="text-3xl font-bold">Premium 5GB</h2>
-                <span class="text-xl">€29/mo</span>
+                <h2 class="text-3xl font-bold">
+                  <%= I18n.t('choose_plan.premium_5GB.name')%>
+                </h2>
+                <span class="text-xl">
+                  <%= I18n.t('choose_plan.premium_5GB.price')%>
+                </span>
               </div>
               <ul class="mt-6 flex flex-col gap-2 text-xs">
                 <li>
                   <%= render(partial: "icons/valid") %>
-                  <span>5GB of data hosted on cloud</span>
+                  <span><%= I18n.t('choose_plan.premium_5GB.data') %></span>
                 </li>
                 <li>
                   <%= render(partial: "icons/valid") %>
-                  <span>Up to 3 users for the account</span>
+                  <span><%= I18n.t('choose_plan.premium_5GB.users') %></span>
                 </li>
                 <li>
                   <%= render(partial: "icons/valid") %>
-                  <span>Unlimited bandwidth</span>
+                  <span><%= I18n.t('choose_plan.premium_5GB.bandwidth') %></span>
                 </li>
               </ul>
               <div class="mt-6">
                 <a href="/register?user[payload]=eyJwbGFuIjoiNUdCIn0=">
-                  <button class="btn text-black btn-primary btn-block">Buy Now</button>
+                  <button class="btn text-black btn-primary btn-block">
+                    <%= I18n.t('choose_plan.buy_now') %>
+                  </button>
                 </a>
               </div>
             </div>
@@ -37,26 +45,32 @@
             <div class="card-body">
               <span class="badge" style="visibility:hidden"></span>
               <div class="flex justify-between">
-                <h2 class="text-3xl font-bold">Premium 10GB</h2>
-                <span class="text-xl">€39/mo</span>
+                <h2 class="text-3xl font-bold">
+                  <%= I18n.t('choose_plan.premium_10GB.name')%></h2>
+                </h2>
+                <span class="text-xl">
+                  <%= I18n.t('choose_plan.premium_10GB.price')%>
+                </span>
               </div>
               <ul class="mt-6 flex flex-col gap-2 text-xs">
                 <li>
                   <%= render(partial: "icons/valid") %>
-                  <span>10GB of data hosted on cloud</span>
+                  <span><%= I18n.t('choose_plan.premium_10GB.data') %></span>
                 </li>
                 <li>
                   <%= render(partial: "icons/valid") %>
-                  <span>Up to 10 users for the account</span>
+                  <span><%= I18n.t('choose_plan.premium_10GB.users') %></span>
                 </li>
                 <li>
                   <%= render(partial: "icons/valid") %>
-                  <span>Unlimited bandwidth</span>
+                  <span><%= I18n.t('choose_plan.premium_10GB.bandwidth') %></span>
                 </li>
               </ul>
               <div class="mt-6">
                 <a href="/register?user[payload]=eyJwbGFuIjoiMTBHQiJ9">
-                  <button class="btn text-black btn-primary btn-block">Buy Now</button>
+                  <button class="btn text-black btn-primary btn-block">
+                    <%= I18n.t('choose_plan.buy_now') %>
+                  </button>
                 </a>
               </div>
             </div>
@@ -66,4 +80,3 @@
     </tbody>
   </table>
 </div>
-
