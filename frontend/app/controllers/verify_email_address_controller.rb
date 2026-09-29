@@ -1,4 +1,5 @@
 class VerifyEmailAddressController < RegistrationBaseController
+  before_action :create_job, only: %i[create]
 
   def create
     redirect_to(validate_path(api_response: @verify_email_address_response.body, user: { payload: user_payload }))

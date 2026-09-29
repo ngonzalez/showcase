@@ -1,7 +1,6 @@
 class RegistrationBaseController < ApplicationController
   before_action :set_permitted_params, only: %i[create]
   before_action :encode_user_payload, only: %i[create]
-  before_action :create_job, only: %i[create]
 
   attr_accessor :permitted_params
   attr_accessor :user_payload
