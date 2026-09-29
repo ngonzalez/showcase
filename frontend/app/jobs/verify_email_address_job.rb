@@ -15,13 +15,12 @@ class VerifyEmailAddressJob < ApplicationJob
     trigger_gateway
   rescue Error::WebRegistration::InvalidRequest => exception
     Rails.logger.error(exception)
-    { "error": "API: Invalid Gateway" }
   end
 
   private
 
   def uri
-    URI("https://#{NGINX_WEB_REGISTRATION_HOST}:#{NGINX_WEB_REGISTRATION_PORT}/api/v1/verify_email_address.json")
+    URI("http://#{NGINX_WEB_REGISTRATION_HOST}:#{NGINX_WEB_REGISTRATION_PORT}/api/v1/verify_email_address.json")
   end
 
   def trigger_gateway
@@ -31,7 +30,7 @@ class VerifyEmailAddressJob < ApplicationJob
     request['Accept'] = 'application/json'
     request.body = request_data.to_json
 
-    response = Net::HTTP.start(uri.host, uri.port, use_ssl: true, open_timeout: 10, read_timeout: 60) do |http|
+    response = Net::HTTP.start(uri.host, uri.port, use_ssl: false, open_timeout: 10, read_timeout: 60) do |http|
       http.request(request)
     end
   rescue StandardError => exception
