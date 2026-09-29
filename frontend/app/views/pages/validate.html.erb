@@ -30,6 +30,11 @@
                 <%= item %>
               </li>
             <%- end %>
+            <%- api_response["verify_user"].each do |item| %>
+              <li>
+                <%= item %>
+              </li>
+            <%- end %>
           </ul>
         </div>
       </div>
