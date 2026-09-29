@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
-  before_action :set_permitted_params, only: %i[register validate]
-  before_action :decode_user_payload, only: %i[register validate]
-  before_action :set_user_payload_encoded, only: %i[validate]
-  before_action :set_api_response, only: %i[validate]
+  before_action :set_permitted_params, only: %i[register validate confirmation]
+  before_action :decode_user_payload, only: %i[register validate confirmation]
   before_action :set_plan, only: %i[register]
+  before_action :set_user_payload_encoded, only: %i[validate]
+  before_action :set_api_response, only: %i[validate confirmation]
 
   attr_accessor :permitted_params
   attr_accessor :user_payload
