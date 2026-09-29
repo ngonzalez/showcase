@@ -2,10 +2,15 @@ class PagesController < ApplicationController
   before_action :set_permitted_params, only: %i[register validate]
   before_action :decode_user_payload, only: %i[register validate]
   before_action :set_user_payload_encoded, only: %i[validate]
+  before_action :set_api_response, only: %i[validate]
   before_action :set_plan, only: %i[register]
 
   attr_accessor :permitted_params
   attr_accessor :user_payload
+
+  attr_accessor :api_response
+  helper_method :api_response
+
   attr_accessor :user_payload_encoded
   helper_method :user_payload_encoded
 
@@ -42,10 +47,24 @@ class PagesController < ApplicationController
   end
 
   def confirmation
-    render("pages/confirmation")
+    if permitted_params.try(:[], :payload).nil?
+      redirect_to(register_path)
+    else
+      render("pages/confirmation",
+        locals: {
+          user: {
+            payload: user_payload
+          }
+        }
+      )
+    end
   end
 
   private
+
+  def set_api_response
+    @api_response = JSON.parse(params[:api_response])
+  end
 
   def set_permitted_params
     @permitted_params = params[:user].permit! if params[:user]

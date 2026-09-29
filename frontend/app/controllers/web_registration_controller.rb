@@ -7,13 +7,13 @@ class WebRegistrationController < ApplicationController
   attr_accessor :user_payload
 
   def create
-    redirect_to(confirmation_path(user: { payload: user_payload }))
+    redirect_to(confirmation_path(api_response: @web_registration_response.body, user: { payload: user_payload }))
   end
 
   private
   
   def create_job
-    WebRegistrationJob.new({}.to_json).perform
+    @web_registration_response = WebRegistrationJob.new({ payload: user_payload }.to_json).perform
   end
 
   def set_permitted_params

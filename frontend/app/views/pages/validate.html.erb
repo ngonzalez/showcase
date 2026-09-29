@@ -20,10 +20,18 @@
         <p><%= I18n.t('form.validate.notice') %></p>
       </div>
     </div>
-    <div class="m-10" style="display:none;">
+    <div class="m-10">
       <div role="alert" class="alert alert-warning">
         <%= render(partial: "icons/alert") %>
-        <div id="errorMessages"></div>
+        <div id="errorMessages">
+          <ul>
+            <%- api_response["verify_account"].each do |item| %>
+              <li>
+                <%= item %>
+              </li>
+            <%- end %>
+          </ul>
+        </div>
       </div>
     </div>
     <%= form_with(method: :post,
