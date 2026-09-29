@@ -1,6 +1,7 @@
-class RegistrationController < ApplicationController
+class VerifyEmailAddressController < ApplicationController
   before_action :set_permitted_params, only: %i[index create]
   before_action :encode_user_payload, only: %i[index create]
+  before_action :create_job, only: %i[create]
 
   attr_accessor :permitted_params
   attr_accessor :user_payload
@@ -14,6 +15,10 @@ class RegistrationController < ApplicationController
   end
 
   private
+  
+  def create_job
+    VerifyEmailAddressJob.new({}.to_json).perform
+  end
 
   def set_permitted_params
     @permitted_params = params[:user].permit! if params[:user]

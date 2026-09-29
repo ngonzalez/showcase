@@ -110,7 +110,7 @@ export default class extends Controller {
     })
     _.each(container.getElementsByTagName('pre'), (item, i) => {
       item.classList.add('shadow-sm')
-      item.classList.add('w-full')
+      item.classList.add('w-auto')
     })
     _.each(container.getElementsByTagName('table'), (item, i) => {
       item.classList.add('shadow-sm')

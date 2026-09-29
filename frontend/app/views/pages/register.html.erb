@@ -11,7 +11,7 @@
       <li class="step"><%= I18n.t('steps.complete') %></li>
     </ul>
     <%= form_with(method: :post,
-                  url: registration_path,
+                  url: verify_email_address_path,
                   id: "registerForm",
                   data: { turbo: true },
                   html: {

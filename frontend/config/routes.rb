@@ -13,14 +13,14 @@ Rails.application.routes.draw do
 
   # Pages
   get "home" => "pages#home", as: "home"
-  get "register" => "pages#register", as: "register"
   get "plans" => "pages#plans", as: "plans"
+  get "register" => "pages#register", as: "register"
   get "validate" => "pages#validate", as: "validate"
   get "confirmation" => "pages#confirmation", as: "confirmation"
 
-  # Registration
-  get "registration" => "registration#index", as: "registration_redirect"
-  post "registration" => "registration#create", as: "registration"
+  # Web Registration
+  post "verify_email_address" => "verify_email_address#create"
+  post "web_registration" => "web_registration#create"
 
   # Documentation
   get "documentation" => "documentation#index", as: "documentation"
