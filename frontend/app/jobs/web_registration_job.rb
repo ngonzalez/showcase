@@ -12,18 +12,18 @@ class WebRegistrationJob < ApplicationJob
   end
 
   def perform(*args)
-    trigger_gateway
-  rescue Error::WebRegistration::InvalidRequest => exception
+    send_request
+  rescue Error::Http::InvalidRequest => exception
     Rails.logger.error(exception)
   end
 
   private
 
   def uri
-    URI("http://#{NGINX_WEB_REGISTRATION_HOST}:#{NGINX_WEB_REGISTRATION_PORT}/api/v1/webRegistration.json")
+    URI("http://#{NGINX_WEB_REGISTRATION_HOST}:#{NGINX_WEB_REGISTRATION_PORT}/api/v1/web_registration.json")
   end
 
-  def trigger_gateway
+  def send_request
     request = Net::HTTP::Post.new(uri.request_uri)
     request['Authorization'] = "Bearer #{NGINX_WEB_REGISTRATION_TOKEN}"
     request['Content-Type'] = 'application/json'
@@ -34,6 +34,6 @@ class WebRegistrationJob < ApplicationJob
       http.request(request)
     end
   rescue StandardError => exception
-    raise Error::WebRegistration::InvalidRequest
+    raise Error::Http::InvalidRequest
   end
 end

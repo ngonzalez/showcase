@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
 
-  rescue_from Error::WebRegistration::InvalidRequest,
+  rescue_from Error::Http::InvalidRequest,
               with: :bad_gateway
 
   rescue_from ActiveRecord::RecordNotFound,

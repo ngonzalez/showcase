@@ -20,25 +20,31 @@
         <p><%= I18n.t('form.validate.notice') %></p>
       </div>
     </div>
-    <div class="m-10">
-      <div role="alert" class="alert alert-warning">
-        <%= render(partial: "icons/alert") %>
-        <div id="errorMessages">
-          <ul>
-            <%- api_response["verify_account"].each do |item| %>
-              <li>
-                <%= item %>
-              </li>
-            <%- end %>
-            <%- api_response["verify_user"].each do |item| %>
-              <li>
-                <%= item %>
-              </li>
-            <%- end %>
-          </ul>
+    <%- if api_response["verify_account"] || api_response["verify_user"] %>
+      <div class="m-10">
+        <div role="alert" class="alert alert-warning">
+          <%= render(partial: "icons/alert") %>
+          <div id="errorMessages">
+            <ul>
+              <%- if api_response["verify_account"] %>
+                <%- api_response["verify_account"].each do |message| %>
+                  <li>
+                    <%= message %>
+                  </li>
+                <%- end %>
+              <%- end %>
+              <%- if api_response["verify_user"] %>
+                <%- api_response["verify_user"].each do |message| %>
+                  <li>
+                    <%= message %>
+                  </li>
+                <%- end %>
+              <%- end %>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    <%- end %>
     <%= form_with(method: :post,
                   url: web_registration_path,
                   id: "validateForm",
@@ -157,8 +163,7 @@
               <td colspan="2" align="center">
                 <input data-action="click->validate#submit"
                        type="submit"
-                       disabled="disabled"
-                       class="btn btn-neutral disabled m-10" />
+                       class="btn btn-neutral m-10" />
               </td>
             </tr>
           </tbody>

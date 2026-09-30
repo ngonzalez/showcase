@@ -1,5 +1,5 @@
 module Error
-  module WebRegistration
+  module Http
     class InvalidRequest < StandardError
     end
   end

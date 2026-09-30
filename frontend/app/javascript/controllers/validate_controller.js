@@ -6,6 +6,15 @@ export default class ValidateFormController extends Controller {
 
   connect() {
     console.debug('validate', 'connect')
+    const element = this.validateFormTarget.querySelector('[type="submit"]')
+    const errorMessages = document.getElementById('errorMessages')
+    if (errorMessages != null) {
+      element.classList.add('disabled')
+      element.setAttribute('disabled', 'disabled')
+    } else {
+      element.classList.remove('disabled')
+      element.removeAttribute('disabled')
+    }
   }
 
   getFormValues() {
