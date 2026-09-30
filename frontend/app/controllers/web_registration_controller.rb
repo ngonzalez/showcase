@@ -15,6 +15,6 @@ class WebRegistrationController < RegistrationBaseController
   end
 
   def set_api_response
-    @api_response = @web_registration_response.body
+    @api_response = @web_registration_response.try(:body)
   end
 end

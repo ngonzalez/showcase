@@ -15,6 +15,6 @@ class VerifyEmailAddressController < RegistrationBaseController
   end
 
   def set_api_response
-    @api_response = @verify_email_address_response.body
+    @api_response = @verify_email_address_response.try(:body)
   end
 end
