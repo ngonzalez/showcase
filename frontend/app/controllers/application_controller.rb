@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   rescue_from Error::Http::InvalidRequest,
               with: :bad_gateway
 
+  rescue_from Error::Http::InvalidResponse,
+              with: :bad_gateway
+
   rescue_from ActiveRecord::RecordNotFound,
               with: :not_found
 
