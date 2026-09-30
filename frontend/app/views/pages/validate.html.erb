@@ -170,6 +170,7 @@
           </tbody>
         </table>
         <!-- hidden fields -->
+        <%= hidden_field_tag("user[accountType]", local_assigns[:user][:payload].try(:[], :accountType)) %>
         <%= hidden_field_tag("user[password]", local_assigns[:user][:payload].try(:[], :password)) %>
         <%= hidden_field_tag("user[passwordConfirmation]", local_assigns[:user][:payload].try(:[], :passwordConfirmation)) %>
       </div>
