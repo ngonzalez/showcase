@@ -20,22 +20,22 @@
         <p><%= I18n.t('form.validate.notice') %></p>
       </div>
     </div>
-    <%- if (api_response["verify_account"] && !api_response["verify_account"].blank?) || \
-           (api_response["verify_user"] && !api_response["verify_user"].blank?) %>
+    <%- if (api_response["verifyAccount"] && !api_response["verifyAccount"].blank?) || \
+           (api_response["verifyUser"] && !api_response["verifyUser"].blank?) %>
       <div class="m-10">
         <div role="alert" class="alert alert-warning">
           <%= render(partial: "icons/alert") %>
           <div id="errorMessages">
             <ul>
-              <%- if api_response["verify_account"] && !api_response["verify_account"].blank? %>
-                <%- api_response["verify_account"].each do |message| %>
+              <%- if api_response["verifyAccount"] && !api_response["verifyAccount"].blank? %>
+                <%- api_response["verifyAccount"].each do |message| %>
                   <li>
                     <%= message %>
                   </li>
                 <%- end %>
               <%- end %>
-              <%- if api_response["verify_user"] && !api_response["verify_user"].blank? %>
-                <%- api_response["verify_user"].each do |message| %>
+              <%- if api_response["verifyUser"] && !api_response["verifyUser"].blank? %>
+                <%- api_response["verifyUser"].each do |message| %>
                   <li>
                     <%= message %>
                   </li>

@@ -16,5 +16,8 @@ class VerifyEmailAddressController < RegistrationBaseController
 
   def set_api_response
     @api_response = @verify_email_address_response.try(:body)
+  rescue StandardError => exception
+    Rails.logger.error(exception)
+    raise Error::Http::InvalidResponse
   end
 end

@@ -16,5 +16,8 @@ class WebRegistrationController < RegistrationBaseController
 
   def set_api_response
     @api_response = @web_registration_response.try(:body)
+  rescue StandardError => exception
+    Rails.logger.error(exception)
+    raise Error::Http::InvalidResponse
   end
 end

@@ -64,6 +64,9 @@ class PagesController < ApplicationController
 
   def set_api_response
     @api_response = JSON.parse(params[:api_response])
+  rescue StandardError => exception
+    Rails.logger.error(exception)
+    raise Error::Http::InvalidResponse
   end
 
   def set_permitted_params
