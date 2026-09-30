@@ -3,7 +3,6 @@ class VerifyEmailAddressController < RegistrationBaseController
   before_action :set_api_response, only: %i[create]
 
   attr_accessor :api_response
-  helper_method :api_response
 
   def create
     redirect_to(validate_path(api_response: api_response, user: { payload: user_payload }))
