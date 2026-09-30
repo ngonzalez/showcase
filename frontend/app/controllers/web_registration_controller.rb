@@ -9,7 +9,7 @@ class WebRegistrationController < RegistrationBaseController
   end
 
   private
-  
+
   def create_job
     @web_registration_response = WebRegistrationJob.new({ payload: user_payload }.to_json).perform
   end
