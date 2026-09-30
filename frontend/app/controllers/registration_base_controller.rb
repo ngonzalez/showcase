@@ -12,10 +12,7 @@ class RegistrationBaseController < ApplicationController
   end
 
   def encode_user_payload
-    payload = params[:user]
-    payload[:password] = params[:password]
-    payload[:passwordConfirmation] = params[:passwordConfirmation]
-    @user_payload = Base64.encode64(payload.to_json) rescue {}
+    @user_payload = Base64.encode64(params[:user].to_json) rescue {}
   end
 
   def company?
