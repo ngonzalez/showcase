@@ -77,8 +77,16 @@ class PagesController < ApplicationController
     @user_payload_encoded = permitted_params[:payload] rescue nil
   end
 
+  def default_web_config_plan
+    WEB_CONFIG.detect { |web_config| web_config[:default] }[:name]
+  end
+
+  def web_config_plans
+    WEB_CONFIG.map { |web_config| web_config[:name] }
+  end
+
   def set_plan
-    @plan = ["5GB", "10GB"].include?(user_payload[:plan]) ? user_payload[:plan] : "5GB"
+    @plan = web_config_plans.include?(user_payload[:plan]) ? user_payload[:plan] : default_web_config_plan
   end
 
   def decode_user_payload

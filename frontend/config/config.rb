@@ -100,3 +100,5 @@ if ENV['POSTGRESQL_PASSWORD'].present?
 else
   raise "Missing ENV POSTGRESQL_PASSWORD"
 end
+
+WEB_CONFIG                    = YAML.load_file(File.expand_path('../config/yaml/web_config.yaml', __dir__), symbolize_names: true).freeze

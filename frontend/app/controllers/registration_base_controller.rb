@@ -12,6 +12,7 @@ class RegistrationBaseController < ApplicationController
   end
 
   def set_user_payload
-    @user_payload = Base64.encode64(params[:user].to_json) rescue {}
+    @user_payload = Base64.encode64(params[:user].to_json)
   end
 end
+

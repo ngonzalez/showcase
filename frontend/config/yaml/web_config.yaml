@@ -1,0 +1,4 @@
+---
+- name: '5GB'
+  default: true
+- name: '10GB'
