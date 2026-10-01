@@ -37,11 +37,11 @@ en:
   footer:
     services:
       name: "Services"
-      web_publishing: "Web Publishing"
+      web_publishing: "Publishing"
     company:
       name: "Company"
       information: "Information"
-      contact: "Contact"
+      contact: "About us"
     legal:
       name: "Legal"
       terms_of_use: "Terms of use"
@@ -49,6 +49,8 @@ en:
     newsletter:
       name: "Newsletter"
       subscribe: "Subscribe"
+  newsletter:
+    success: "Email added to the newsletter successfully"
   home:
     service_name: "Web Publishing Services"
     service_details: "Premium offers: 5GB and 10GB of data hosted on cloud<br />Up to 3 and 10 users per account<br />Unlimited bandwitdth"
