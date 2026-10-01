@@ -13,14 +13,12 @@ class VerifyEmailAddressJob < ApplicationJob
 
   def perform(*args)
     send_request
-  rescue Error::Http::InvalidRequest => exception
-    Rails.logger.error(exception)
   end
 
   private
 
   def uri
-    URI("http://#{NGINX_WEB_REGISTRATION_HOST}:#{NGINX_WEB_REGISTRATION_PORT}/api/v1/verify_email_address.json")
+    URI("https://#{NGINX_WEB_REGISTRATION_HOST}:#{NGINX_WEB_REGISTRATION_PORT}/api/v1/verify_email_address.json")
   end
 
   def send_request
@@ -30,7 +28,7 @@ class VerifyEmailAddressJob < ApplicationJob
     request['Accept'] = 'application/json'
     request.body = request_data.to_json
 
-    response = Net::HTTP.start(uri.host, uri.port, use_ssl: false, open_timeout: 10, read_timeout: 60) do |http|
+    response = Net::HTTP.start(uri.host, uri.port, use_ssl: true, open_timeout: 10, read_timeout: 60) do |http|
       http.request(request)
     end
   rescue StandardError => exception
