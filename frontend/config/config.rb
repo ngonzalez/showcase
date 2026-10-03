@@ -56,6 +56,13 @@ else
   raise "Missing ENV NGINX_STATUS_PORT"
 end
 
+# NGINX_WEB_REGISTRATION_PROTOCOL
+# Optional, https by default: http to call a backend running locally
+NGINX_WEB_REGISTRATION_PROTOCOL = ENV['NGINX_WEB_REGISTRATION_PROTOCOL'].presence || 'https'
+unless %w[http https].include?(NGINX_WEB_REGISTRATION_PROTOCOL)
+  raise "ENV NGINX_WEB_REGISTRATION_PROTOCOL must be http or https"
+end
+
 # NGINX_WEB_REGISTRATION_HOST
 if ENV['NGINX_WEB_REGISTRATION_HOST'].present?
   NGINX_WEB_REGISTRATION_HOST = ENV['NGINX_WEB_REGISTRATION_HOST']
