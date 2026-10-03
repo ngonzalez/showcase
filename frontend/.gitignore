@@ -26,6 +26,11 @@ package-lock.json
 # bootsnap
 /tmp/cache/bootsnap
 
+# puma
+/tmp/pids/*
+!/tmp/pids/.keep
+/tmp/restart.txt
+
 # rcov
 /coverage
 
