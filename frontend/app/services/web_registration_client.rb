@@ -43,7 +43,7 @@ class WebRegistrationClient
   private
 
   def uri(endpoint)
-    URI("https://#{NGINX_WEB_REGISTRATION_HOST}:#{NGINX_WEB_REGISTRATION_PORT}/api/v1/#{endpoint}.json")
+    URI("#{NGINX_WEB_REGISTRATION_PROTOCOL}://#{NGINX_WEB_REGISTRATION_HOST}:#{NGINX_WEB_REGISTRATION_PORT}/api/v1/#{endpoint}.json")
   end
 
   def post(endpoint, payload)
@@ -67,7 +67,7 @@ class WebRegistrationClient
     request['Accept'] = 'application/json'
     request.body = { payload: payload }.to_json
 
-    Net::HTTP.start(uri.host, uri.port, use_ssl: true, open_timeout: OPEN_TIMEOUT, read_timeout: READ_TIMEOUT) do |http|
+    Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https', open_timeout: OPEN_TIMEOUT, read_timeout: READ_TIMEOUT) do |http|
       http.request(request)
     end
   rescue *NETWORK_ERRORS => exception

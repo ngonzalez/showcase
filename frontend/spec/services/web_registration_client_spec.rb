@@ -82,6 +82,26 @@ RSpec.describe WebRegistrationClient do
         end
       end
 
+      it "uses SSL by default" do
+        stub_web_registration_api(endpoint, status: 200, body: instance_exec(&bodies[:success]))
+        expect(Net::HTTP).to receive(:start).with(NGINX_WEB_REGISTRATION_HOST, NGINX_WEB_REGISTRATION_PORT.to_i, hash_including(use_ssl: true)).and_call_original
+
+        client.public_send(endpoint, payload)
+      end
+
+      context "with the http protocol, for a backend running locally" do
+        before { stub_const("NGINX_WEB_REGISTRATION_PROTOCOL", "http") }
+
+        it "posts to the http URL without SSL" do
+          stub = stub_web_registration_api(endpoint, status: 200, body: instance_exec(&bodies[:success]))
+          expect(Net::HTTP).to receive(:start).with(NGINX_WEB_REGISTRATION_HOST, NGINX_WEB_REGISTRATION_PORT.to_i, hash_including(use_ssl: false)).and_call_original
+
+          expect(client.public_send(endpoint, payload)).to be_success
+          expect(stub).to have_been_requested.once
+          expect(url).to start_with("http://")
+        end
+      end
+
       it "doesn't hide programming errors as network errors" do
         allow(Net::HTTP).to receive(:start).and_raise(NoMethodError)
 

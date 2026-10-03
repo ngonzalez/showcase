@@ -7,7 +7,7 @@
 # or API token, so 400 responses have an empty body.
 module WebRegistrationApi
   def web_registration_api_url(endpoint)
-    "https://#{NGINX_WEB_REGISTRATION_HOST}:#{NGINX_WEB_REGISTRATION_PORT}/api/v1/#{endpoint}.json"
+    "#{NGINX_WEB_REGISTRATION_PROTOCOL}://#{NGINX_WEB_REGISTRATION_HOST}:#{NGINX_WEB_REGISTRATION_PORT}/api/v1/#{endpoint}.json"
   end
 
   def stub_web_registration_api(endpoint, status:, body: nil)
