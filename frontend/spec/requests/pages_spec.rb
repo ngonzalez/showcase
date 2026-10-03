@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe PagesController, type: :request do
   let(:attributes) { user_attributes }
-  let(:payload) { encode_payload(attributes) }
 
   %w[/ /home].each do |path|
     describe "GET #{path}" do
@@ -41,52 +40,61 @@ RSpec.describe PagesController, type: :request do
       expect(response.body).to have_field("user[passwordConfirmation]", type: "password")
     end
 
-    it "selects the default plan without payload" do
+    it "selects the default plan without plan" do
       get "/register"
 
       expect(response.body).to have_select("user[plan]", options: ["Premium 5GB"], selected: "Premium 5GB")
     end
 
-    it "selects the plan from the payload" do
-      get "/register", params: { user: { payload: encode_payload(plan: "10GB") } }
+    it "selects the plan" do
+      get "/register", params: { plan: "10GB" }
 
       expect(response.body).to have_select("user[plan]", options: ["Premium 10GB"], selected: "Premium 10GB")
     end
 
     it "selects the default plan for an unknown plan" do
-      get "/register", params: { user: { payload: encode_payload(plan: "1TB") } }
+      get "/register", params: { plan: "1TB" }
 
       expect(response.body).to have_select("user[plan]", selected: "Premium 5GB")
     end
 
-    it "selects the default plan for a payload that isn't Base64 JSON" do
-      get "/register", params: { user: { payload: "not json" } }
+    it "is linked from the plans" do
+      get "/plans"
 
-      expect(response).to have_http_status(200)
-      expect(response.body).to have_select("user[plan]", selected: "Premium 5GB")
+      expect(response.body).to have_link(href: register_path(plan: "5GB"))
+      expect(response.body).to have_link(href: register_path(plan: "10GB"))
     end
   end
 
   describe "GET /validate" do
     let(:api_response) { verify_email_address_body.to_json }
+    let(:payload) { encrypt_payload(attributes) }
 
-    it "renders the details to validate in the web registration form" do
+    it "renders the details to validate" do
       get "/validate", params: { api_response: api_response, user: { payload: payload } }
 
       expect(response).to have_http_status(200)
-      expect(response.body).to have_css("form#validateForm[method='post'][action='#{web_registration_path}']")
-      attributes.each do |name, value|
-        expect(response.body).to have_field("user[#{name}]", type: :hidden, with: value, visible: :hidden)
+      %i[companyName firstName lastName emailAddress address postalCode city country plan].each do |name|
+        expect(response.body).to have_css("td", text: attributes[name])
       end
-      expect(response.body).to have_link(I18n.t('steps.register'), href: register_path(user: { payload: payload }))
+      expect(response.body).to have_link(I18n.t('steps.register'), href: register_path(plan: "10GB"))
       expect(response.body).not_to have_css("#errorMessages")
     end
 
-    it "doesn't render the company name for a person" do
-      get "/validate", params: { api_response: api_response, user: { payload: encode_payload(user_attributes(accountType: "person")) } }
+    it "submits the encrypted payload only to the web registration" do
+      get "/validate", params: { api_response: api_response, user: { payload: payload } }
 
-      expect(response.body).not_to have_field("user[companyName]", visible: :all)
-      expect(response.body).to have_field("user[firstName]", type: :hidden, with: "Anna", visible: :hidden)
+      expect(response.body).to have_css("form#validateForm[method='post'][action='#{web_registration_path}']")
+      expect(response.body).to have_field("user[payload]", type: :hidden, with: payload, visible: :hidden)
+      expect(response.body).to have_css("form#validateForm input[name^='user[']", visible: :all, count: 1)
+      expect(response.body).to not_expose_password(attributes)
+    end
+
+    it "doesn't render the company name for a person" do
+      get "/validate", params: { api_response: api_response, user: { payload: encrypt_payload(user_attributes(accountType: "person")) } }
+
+      expect(response.body).not_to have_content("Example Company")
+      expect(response.body).to have_css("td", text: "Anna")
     end
 
     it "renders the account and user errors" do
@@ -108,6 +116,21 @@ RSpec.describe PagesController, type: :request do
       expect(response).to redirect_to(register_path)
     end
 
+    {
+      "a Base64 payload" => -> { Base64.strict_encode64(user_attributes.to_json) },
+      "a tampered payload" => -> { iv, value = encrypt_payload(user_attributes).split(":"); [iv, value.reverse].join(":") },
+      "a payload encrypted with another key" => -> { "77dbdd89282548b91213af93c2a6883a:d82390e2b3afa8133a3324cc92d6d0f7" },
+      "a payload that isn't hex" => -> { "not:hex" },
+      "an encrypted payload that isn't JSON" => -> { EncryptHelpers.encrypt("not json") },
+      "an encrypted payload that isn't a JSON object" => -> { EncryptHelpers.encrypt([1, 2].to_json) },
+    }.each do |description, invalid_payload|
+      it "redirects to the register page for #{description}" do
+        get "/validate", params: { api_response: api_response, user: { payload: instance_exec(&invalid_payload) } }
+
+        expect(response).to redirect_to(register_path)
+      end
+    end
+
     it "returns a 502 HTTP code without API response" do
       get "/validate", params: { user: { payload: payload } }
 
@@ -125,7 +148,7 @@ RSpec.describe PagesController, type: :request do
     let(:api_response) { web_registration_success_body.to_json }
 
     it "renders the confirmation" do
-      get "/confirmation", params: { api_response: api_response, user: { payload: payload } }
+      get "/confirmation", params: { api_response: api_response }
 
       expect(response).to have_http_status(200)
       %w[text_1 text_2 text_3].each do |key|
@@ -133,14 +156,8 @@ RSpec.describe PagesController, type: :request do
       end
     end
 
-    it "redirects to the register page without payload" do
-      get "/confirmation", params: { api_response: api_response }
-
-      expect(response).to redirect_to(register_path)
-    end
-
     it "returns a 502 HTTP code for an API response that isn't JSON" do
-      get "/confirmation", params: { api_response: "not json", user: { payload: payload } }
+      get "/confirmation", params: { api_response: "not json" }
 
       expect(response).to have_http_status(502)
     end

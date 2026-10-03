@@ -2,7 +2,6 @@ require "rails_helper"
 
 RSpec.describe VerifyEmailAddressController, type: :request do
   let(:attributes) { user_attributes }
-  let(:payload) { encode_payload(attributes) }
 
   describe "POST /verify_email_address" do
     context "with valid details" do
@@ -11,15 +10,17 @@ RSpec.describe VerifyEmailAddressController, type: :request do
       it "sends the Base64 encoded user details to the backend" do
         post "/verify_email_address", params: { user: attributes }
 
-        expect(stub.with(body: { payload: payload }.to_json)).to have_been_requested.once
+        expect(stub.with(body: { payload: encode_payload(attributes) }.to_json)).to have_been_requested.once
       end
 
-      it "redirects to the validate page with the API response" do
+      it "redirects to the validate page with the API response and the encrypted user details" do
         post "/verify_email_address", params: { user: attributes }
 
-        expect(response).to redirect_to(
-          validate_path(api_response: verify_email_address_body.to_json, user: { payload: payload })
-        )
+        expect(response).to have_http_status(302)
+        expect(URI(response.location).path).to eq(validate_path)
+        expect(redirect_params["api_response"]).to eq(verify_email_address_body.to_json)
+        expect(decrypt_payload(redirect_params["user"]["payload"])).to eq(attributes)
+        expect(response.location).to not_expose_password(attributes)
       end
 
       it "renders the details to validate without errors" do
@@ -27,9 +28,10 @@ RSpec.describe VerifyEmailAddressController, type: :request do
         follow_redirect!
 
         expect(response).to have_http_status(200)
-        expect(response.body).to have_field("user[companyName]", type: :hidden, with: "Example Company", visible: :hidden)
-        expect(response.body).to have_field("user[emailAddress]", type: :hidden, with: "anna.smith@example.com", visible: :hidden)
+        expect(response.body).to have_css("td", text: "Example Company")
+        expect(response.body).to have_css("td", text: "anna.smith@example.com")
         expect(response.body).not_to have_css("#errorMessages")
+        expect(response.body).to not_expose_password(attributes)
       end
     end
 

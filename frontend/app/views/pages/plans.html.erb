@@ -31,7 +31,7 @@
                 </li>
               </ul>
               <div class="mt-6">
-                <a href="/register?user[payload]=eyJwbGFuIjoiNUdCIn0=">
+                <a href="<%= register_path(plan: "5GB") %>">
                   <button class="btn btn-primary btn-block">
                     <%= I18n.t('choose_plan.buy_now') %>
                   </button>
@@ -67,7 +67,7 @@
                 </li>
               </ul>
               <div class="mt-6">
-                <a href="/register?user[payload]=eyJwbGFuIjoiMTBHQiJ9">
+                <a href="<%= register_path(plan: "10GB") %>">
                   <button class="btn btn-primary btn-block">
                     <%= I18n.t('choose_plan.buy_now') %>
                   </button>

@@ -1,23 +1,20 @@
 class RegistrationBaseController < ApplicationController
-  before_action :set_permitted_params, only: %i[create]
-  before_action :require_permitted_params, only: %i[create]
-  before_action :set_user_payload, only: %i[create]
+  include UserPayloadConcern
 
-  attr_accessor :permitted_params
-  attr_accessor :user_payload
+  before_action :set_user_attributes, only: %i[create]
+  before_action :require_user_attributes, only: %i[create]
+
+  attr_accessor :user_attributes
 
   private
 
-  def set_permitted_params
-    @permitted_params = params[:user].permit! if params[:user]
+  def require_user_attributes
+    redirect_to(register_path) if user_attributes.blank?
   end
 
-  def require_permitted_params
-    redirect_to(register_path) if permitted_params.blank?
-  end
-
-  def set_user_payload
-    @user_payload = Base64.strict_encode64(permitted_params.to_h.to_json)
+  # Base64 encoded JSON object, as expected by the backend
+  def backend_payload
+    Base64.strict_encode64(user_attributes.to_json)
   end
 
   def web_registration_client

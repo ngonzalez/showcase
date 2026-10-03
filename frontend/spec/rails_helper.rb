@@ -6,7 +6,7 @@ ENV['RAILS_ENV'] ||= 'test'
 {
   'APP_HOSTNAME' => 'showcase.test',
   'APP_PORT' => '3000',
-  'SECRET_KEY_BASE' => 'test-secret-key-base',
+  'SECRET_KEY_BASE' => '6a1c0b3e9f2d4a5b8c7e0f1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e',
   'NGINX_HOST' => 'showcase.test',
   'NGINX_PORT' => '443',
   'NGINX_STATUS_PORT' => '8080',
@@ -28,7 +28,7 @@ require 'webmock/rspec'
 
 # Load every application file, so SimpleCov reports the ones no spec loads
 Rails.autoloaders.main.dirs
-  .select { |dir| dir.start_with?(Rails.root.join('app').to_s) }
+  .select { |dir| dir.start_with?(Rails.root.join('app').to_s, Rails.root.join('lib').to_s) }
   .each { |dir| Rails.autoloaders.main.eager_load_dir(dir) }
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }

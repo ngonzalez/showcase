@@ -35,8 +35,22 @@ module WebRegistrationApi
     }.merge(overrides)
   end
 
+  # The payload sent to the backend
   def encode_payload(attributes)
     Base64.strict_encode64(attributes.to_json)
+  end
+
+  # The payload passed between the registration pages
+  def encrypt_payload(attributes)
+    EncryptHelpers.encrypt(attributes.to_json)
+  end
+
+  def decrypt_payload(payload)
+    JSON.parse(EncryptHelpers.decrypt(payload), symbolize_names: true)
+  end
+
+  def redirect_params
+    Rack::Utils.parse_nested_query(URI(response.location).query)
   end
 
   def verify_email_address_body(verify_account: [], verify_user: [])
@@ -57,4 +71,13 @@ end
 
 RSpec.configure do |config|
   config.include WebRegistrationApi
+end
+
+RSpec::Matchers.define :not_expose_password do |attributes|
+  match do |content|
+    content = CGI.unescape(content.to_s)
+    [attributes[:password], Base64.strict_encode64(attributes.to_json)].none? { |secret| content.include?(secret) }
+  end
+
+  failure_message { |content| "expected the password not to appear in clear or Base64 in:\n#{content}" }
 end
