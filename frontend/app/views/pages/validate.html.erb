@@ -8,7 +8,7 @@
       </li>
       <li class="step step-neutral">
         <%= link_to I18n.t('steps.register'),
-              register_path(user: { payload: user_payload_encoded }),
+              register_path(plan: local_assigns[:user][:payload][:plan]),
               style: "text-decoration: underline;" %>
       </li>
       <li class="step step-neutral"><%= I18n.t('steps.validate') %></li>
@@ -68,7 +68,6 @@
                 </td>
                 <td>
                   <%= local_assigns[:user][:payload].try(:[], :companyName) %>
-                  <%= hidden_field_tag("user[companyName]", local_assigns[:user][:payload].try(:[], :companyName)) %>
                 </td>
               </tr>
             <% end %>
@@ -80,7 +79,6 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :firstName) %>
-                <%= hidden_field_tag("user[firstName]", local_assigns[:user][:payload].try(:[], :firstName)) %>
               </td>
             </tr>
             <tr>
@@ -91,7 +89,6 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :lastName) %>
-                <%= hidden_field_tag("user[lastName]", local_assigns[:user][:payload].try(:[], :lastName)) %>
               </td>
             </tr>
             <tr>
@@ -102,7 +99,6 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :emailAddress) %>
-                <%= hidden_field_tag("user[emailAddress]", local_assigns[:user][:payload].try(:[], :emailAddress)) %>
               </td>
             </tr>
             <tr>
@@ -113,7 +109,6 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :address) %>
-                <%= hidden_field_tag("user[address]", local_assigns[:user][:payload].try(:[], :address)) %>
               </td>
             </tr>
             <tr>
@@ -124,7 +119,6 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :postalCode) %>
-                <%= hidden_field_tag("user[postalCode]", local_assigns[:user][:payload].try(:[], :postalCode)) %>
               </td>
             </tr>
             <tr>
@@ -135,7 +129,6 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :city) %>
-                <%= hidden_field_tag("user[city]", local_assigns[:user][:payload].try(:[], :city)) %>
               </td>
             </tr>
             <tr>
@@ -146,7 +139,6 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :country) %>
-                <%= hidden_field_tag("user[country]", local_assigns[:user][:payload].try(:[], :country)) %>
               </td>
             </tr>
             <tr>
@@ -157,7 +149,6 @@
               </td>
               <td>
                 <%= local_assigns[:user][:payload].try(:[], :plan) %>
-                <%= hidden_field_tag("user[plan]", local_assigns[:user][:payload].try(:[], :plan)) %>
               </td>
             </tr>
             <tr>
@@ -170,9 +161,7 @@
           </tbody>
         </table>
         <!-- hidden fields -->
-        <%= hidden_field_tag("user[accountType]", local_assigns[:user][:payload].try(:[], :accountType)) %>
-        <%= hidden_field_tag("user[password]", local_assigns[:user][:payload].try(:[], :password)) %>
-        <%= hidden_field_tag("user[passwordConfirmation]", local_assigns[:user][:payload].try(:[], :passwordConfirmation)) %>
+        <%= hidden_field_tag("user[payload]", user_payload_encoded) %>
       </div>
     <% end %>
   </div>

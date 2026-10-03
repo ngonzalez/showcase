@@ -51,6 +51,8 @@ en:
       subscribe: "Subscribe"
   newsletter:
     success: "Email added to the newsletter successfully"
+  web_registration:
+    fail: "Your account could not be created, please verify the details and try again"
   home:
     service_name: "Web Publishing Services"
     service_details: "Premium offers: 5GB and 10GB of data hosted on cloud<br />Up to 3 and 10 users per account<br />Unlimited bandwitdth"

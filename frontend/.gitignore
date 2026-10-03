@@ -7,24 +7,31 @@
 # Ignore bundler config.
 /.bundle
 
+# assets
+/public/assets
+/app/assets/builds/application.css
+/app/assets/builds/tailwind.css
+/vendor/javascript
+
+# node
+/node_modules
+package-lock.json
+
 # log
 /log/production.log
 /log/development.log
 /log/test.log
+/log/test.log.0
 
 # bootsnap
 /tmp/cache/bootsnap
-/tmp/restart.txt
 
-# assets
-/public/assets/
-/app/assets/builds
+# rcov
+/coverage
 
-# node_modules
-/node_modules
+# rspec
+/rspec.xml
 
-# DS_Store
-/.DS_Store
-
-# .env
-/.env
+# active storage
+/tmp/test-storage
+/tmp/development-storage

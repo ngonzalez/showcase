@@ -1,11 +1,12 @@
 class PagesController < ApplicationController
-  before_action :set_permitted_params, only: %i[register validate confirmation]
-  before_action :decode_user_payload, only: %i[register validate confirmation]
+  include UserPayloadConcern
+
   before_action :set_plan, only: %i[register]
   before_action :set_user_payload_encoded, only: %i[validate]
+  before_action :set_user_payload, only: %i[validate]
+  before_action :require_user_payload, only: %i[validate]
   before_action :set_api_response, only: %i[validate confirmation]
 
-  attr_accessor :permitted_params
   attr_accessor :user_payload
 
   attr_accessor :api_response
@@ -23,7 +24,11 @@ class PagesController < ApplicationController
   end
 
   def register
-    render("pages/register",
+    render("pages/register")
+  end
+
+  def validate
+    render("pages/validate",
       locals: {
         user: {
           payload: user_payload
@@ -32,32 +37,8 @@ class PagesController < ApplicationController
     )
   end
 
-  def validate
-    if permitted_params.try(:[], :payload).nil?
-      redirect_to(register_path)
-    else
-      render("pages/validate",
-        locals: {
-          user: {
-            payload: user_payload
-          }
-        }
-      )
-    end
-  end
-
   def confirmation
-    if permitted_params.try(:[], :payload).nil?
-      redirect_to(register_path)
-    else
-      render("pages/confirmation",
-        locals: {
-          user: {
-            payload: user_payload
-          }
-        }
-      )
-    end
+    render("pages/confirmation")
   end
 
   private
@@ -69,12 +50,16 @@ class PagesController < ApplicationController
     raise Error::Http::InvalidResponse
   end
 
-  def set_permitted_params
-    @permitted_params = params[:user].permit! if params[:user]
+  def set_user_payload_encoded
+    @user_payload_encoded = params.dig(:user, :payload)
   end
 
-  def set_user_payload_encoded
-    @user_payload_encoded = permitted_params[:payload] rescue nil
+  def set_user_payload
+    @user_payload = decrypt_user_payload(user_payload_encoded)
+  end
+
+  def require_user_payload
+    redirect_to(register_path) if user_payload.nil?
   end
 
   def default_web_config_plan
@@ -86,10 +71,6 @@ class PagesController < ApplicationController
   end
 
   def set_plan
-    @plan = web_config_plans.include?(user_payload[:plan]) ? user_payload[:plan] : default_web_config_plan
-  end
-
-  def decode_user_payload
-    @user_payload = JSON.parse(Base64.decode64(permitted_params[:payload]), symbolize_names: true) rescue {}
+    @plan = web_config_plans.include?(params[:plan]) ? params[:plan] : default_web_config_plan
   end
 end
