@@ -7,7 +7,8 @@ require 'json'
 #   POST /api/v1/verify_email_address.json
 #   POST /api/v1/web_registration.json
 #
-# Both endpoints take `{ payload: <Base64 encoded JSON object> }` and answer
+# Both endpoints take `{ payload: <JSON object encrypted with EncryptHelpers
+# and WEB_REGISTRATION_ENCRYPTION_KEY> }` and answer
 # 200 or 422 with a JSON body; anything else is an unusable response.
 class WebRegistrationClient
   OPEN_TIMEOUT = 10

@@ -24,6 +24,17 @@ else
   raise "Missing ENV SECRET_KEY_BASE"
 end
 
+# WEB_REGISTRATION_ENCRYPTION_KEY
+# Shared by the frontend and the backend to encrypt the web registration payload
+if ENV['WEB_REGISTRATION_ENCRYPTION_KEY'].present?
+  if ENV['WEB_REGISTRATION_ENCRYPTION_KEY'].length < 32
+    raise "ENV WEB_REGISTRATION_ENCRYPTION_KEY must be at least 32 characters"
+  end
+  WEB_REGISTRATION_ENCRYPTION_KEY = ENV['WEB_REGISTRATION_ENCRYPTION_KEY'][0, 32]
+else
+  raise "Missing ENV WEB_REGISTRATION_ENCRYPTION_KEY"
+end
+
 # NGINX_HOST
 if ENV['NGINX_HOST'].present?
   NGINX_HOST = ENV['NGINX_HOST']

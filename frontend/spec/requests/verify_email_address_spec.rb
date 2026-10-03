@@ -7,10 +7,11 @@ RSpec.describe VerifyEmailAddressController, type: :request do
     context "with valid details" do
       let!(:stub) { stub_web_registration_api(:verify_email_address, status: 200, body: verify_email_address_body) }
 
-      it "sends the Base64 encoded user details to the backend" do
+      it "sends the user details encrypted with the shared key to the backend" do
         post "/verify_email_address", params: { user: attributes }
 
-        expect(stub.with(body: { payload: encode_payload(attributes) }.to_json)).to have_been_requested.once
+        expect(stub.with { |request| backend_payload_attributes(request) == attributes }).to have_been_requested.once
+        expect(stub.with { |request| request.body.match?(/#{attributes[:password]}/) }).not_to have_been_requested
       end
 
       it "redirects to the validate page with the API response and the encrypted user details" do

@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe WebRegistrationClient do
   subject(:client) { described_class.new }
 
-  let(:payload) { encode_payload(user_attributes) }
+  let(:payload) { encrypt_backend_payload(user_attributes) }
 
   {
     verify_email_address: { success: -> { verify_email_address_body }, failure: -> { verify_email_address_body(verify_user: ["Email address has already been taken"]) } },

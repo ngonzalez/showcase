@@ -13,6 +13,7 @@ ENV['RAILS_ENV'] ||= 'test'
   'NGINX_WEB_REGISTRATION_HOST' => 'backend.test',
   'NGINX_WEB_REGISTRATION_PORT' => '443',
   'NGINX_WEB_REGISTRATION_TOKEN' => 'test-api-token',
+  'WEB_REGISTRATION_ENCRYPTION_KEY' => '0123456789abcdef0123456789abcdef',
   'POSTGRESQL_HOST' => 'localhost',
   'POSTGRESQL_PORT' => '5432',
   'POSTGRESQL_DB' => 'showcase',

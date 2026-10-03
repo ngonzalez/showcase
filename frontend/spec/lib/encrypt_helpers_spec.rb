@@ -41,4 +41,29 @@ RSpec.describe EncryptHelpers, :type => :class do
       expect { EncryptHelpers.encrypt(15) }.to raise_error(ArgumentError)
     end
   end
+
+  describe "with a key" do
+    let(:key) { "0123456789abcdef0123456789abcdef" }
+
+    it "decrypts a known value" do
+      expect(EncryptHelpers.decrypt("b61325a02fabe53aa0dce3dcc564c513:1bbe06db857c443b15a1114cfaaa7fd2", key: key)).to eq(str)
+    end
+
+    it "round-trips with the same key" do
+      expect(EncryptHelpers.decrypt(EncryptHelpers.encrypt(str, key: key), key: key)).to eq(str)
+    end
+
+    it "can't be decrypted with SECRET_KEY_BASE" do
+      decrypted = begin
+        EncryptHelpers.decrypt(EncryptHelpers.encrypt(str, key: key))
+      rescue OpenSSL::Cipher::CipherError
+        nil
+      end
+      expect(decrypted).not_to eq(str)
+    end
+
+    it "raises ArgumentError for a key that isn't 32 bytes" do
+      expect { EncryptHelpers.encrypt(str, key: "short") }.to raise_error(ArgumentError)
+    end
+  end
 end

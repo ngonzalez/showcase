@@ -12,9 +12,9 @@ class RegistrationBaseController < ApplicationController
     redirect_to(register_path) if user_attributes.blank?
   end
 
-  # Base64 encoded JSON object, as expected by the backend
+  # JSON object encrypted with the key shared with the backend
   def backend_payload
-    Base64.strict_encode64(user_attributes.to_json)
+    EncryptHelpers.encrypt(user_attributes.to_json, key: WEB_REGISTRATION_ENCRYPTION_KEY)
   end
 
   def web_registration_client

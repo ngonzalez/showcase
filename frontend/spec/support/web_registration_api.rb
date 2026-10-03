@@ -35,9 +35,14 @@ module WebRegistrationApi
     }.merge(overrides)
   end
 
-  # The payload sent to the backend
-  def encode_payload(attributes)
-    Base64.strict_encode64(attributes.to_json)
+  # The payload sent to the backend, encrypted with the shared key
+  def encrypt_backend_payload(attributes)
+    EncryptHelpers.encrypt(attributes.to_json, key: WEB_REGISTRATION_ENCRYPTION_KEY)
+  end
+
+  # The user details in the body of a request to the backend
+  def backend_payload_attributes(request)
+    JSON.parse(EncryptHelpers.decrypt(JSON.parse(request.body)["payload"], key: WEB_REGISTRATION_ENCRYPTION_KEY), symbolize_names: true)
   end
 
   # The payload passed between the registration pages

@@ -7,11 +7,11 @@ class EncryptHelpers
 
   # AES-256-CBC Encryption
   # @param str [String] String to encrypt
+  # @param key [String] 32 bytes key, SECRET_KEY_BASE by default
   # @return [String] the String encrypted
-  def self.encrypt(str)
+  def self.encrypt(str, key: SECRET_KEY_BASE[0, 32])
     raise ArgumentError unless str.is_a?(String)
     iv = OpenSSL::Random.random_bytes(16)
-    key = SECRET_KEY_BASE[0, 32]
     cipher = OpenSSL::Cipher.new('aes-256-cbc').encrypt
     cipher.key = key
     cipher.iv = iv
@@ -21,12 +21,12 @@ class EncryptHelpers
 
   # AES-256-CBC Decryption
   # @param str [String] String to decrypt
+  # @param key [String] 32 bytes key, SECRET_KEY_BASE by default
   # @return [String] the String decrypted
-  def self.decrypt(str)
+  def self.decrypt(str, key: SECRET_KEY_BASE[0, 32])
     raise ArgumentError unless str.is_a?(String)
     iv_hex, encrypted_hex = str.split(":")
     iv = [iv_hex].pack("H*")
-    key = SECRET_KEY_BASE[0, 32]
     cipher = OpenSSL::Cipher.new('aes-256-cbc').decrypt
     cipher.key = key
     cipher.iv = iv

@@ -9,10 +9,11 @@ RSpec.describe WebRegistrationController, type: :request do
       let(:body) { web_registration_success_body }
       let!(:stub) { stub_web_registration_api(:web_registration, status: 200, body: body) }
 
-      it "sends the decrypted user details, Base64 encoded, to the backend" do
+      it "sends the user details encrypted with the shared key to the backend" do
         post "/web_registration", params: { user: { payload: payload } }
 
-        expect(stub.with(body: { payload: encode_payload(attributes) }.to_json)).to have_been_requested.once
+        expect(stub.with { |request| backend_payload_attributes(request) == attributes }).to have_been_requested.once
+        expect(stub.with { |request| JSON.parse(request.body)["payload"] == payload }).not_to have_been_requested
       end
 
       it "redirects to the confirmation page" do
@@ -46,7 +47,8 @@ RSpec.describe WebRegistrationController, type: :request do
     {
       "without user details" => -> { {} },
       "with user details in clear" => -> { { user: user_attributes } },
-      "with a Base64 payload" => -> { { user: { payload: encode_payload(user_attributes) } } },
+      "with a Base64 payload" => -> { { user: { payload: Base64.strict_encode64(user_attributes.to_json) } } },
+      "with a payload encrypted with the backend key" => -> { { user: { payload: encrypt_backend_payload(user_attributes) } } },
       "with a payload that can't be decrypted" => -> { { user: { payload: "77dbdd89282548b91213af93c2a6883a:d82390e2b3afa8133a3324cc92d6d0f7" } } },
     }.each do |description, params|
       it "redirects to the register page #{description}" do
